@@ -38,18 +38,19 @@ I team continueranno a lavorare in modo indipendente sui loro progetti, cercando
 
 # Requisito tecnico
 
-## Realizzazione di una Rubrica telefonica aziendale
+## Progetto Rubrica Telefonica Aziendale per "TechSolutions Inc." (nome di fantasia)
 
-Il progetto dovrebbe includere un set minimo di funzionalità essenziali:
+### Scopo del Progetto:
+Il progetto mira a implementare una rubrica telefonica aziendale per TechSolutions Inc., una società di sviluppo software specializzata in soluzioni tecnologiche innovative. L'obiettivo principale è ottimizzare la gestione dei contatti interni ed esterni dell'azienda, migliorare la comunicazione tra dipartimenti e facilitare l'accesso rapido alle informazioni di contatto cruciali.
 
-1. **Gestione dei contatti**: Gli utenti devono poter aggiungere, visualizzare, modificare ed eliminare i contatti aziendali. Questo include informazioni come nome, numero di telefono, email, posizione e dipartimento.
+### Funzionalità Essenziali:
 
-2. **Ricerca e filtri**: Una funzionalità di ricerca avanzata che consente agli utenti di trovare rapidamente i contatti desiderati. I filtri possono essere implementati per ordinare i contatti per nome, dipartimento o altri attributi.
+1. Gestione dei Contatti: Consente agli utenti di aggiungere, visualizzare, modificare ed eliminare i contatti aziendali, inclusi dipendenti, clienti e partner commerciali.
+2. Ricerca e Filtri: Implementa una funzionalità di ricerca avanzata e filtri per consentire agli utenti di trovare rapidamente i contatti desiderati.
+3. Interfaccia Utente Intuitiva: Offre un'interfaccia utente chiara e intuitiva per una navigazione senza problemi attraverso le funzionalità della rubrica.
 
-3. **Accesso e autorizzazione**: Un sistema di accesso sicuro che richiede l'autenticazione degli utenti per accedere alla rubrica. Inoltre, devono essere implementati meccanismi di autorizzazione per definire i livelli di accesso degli utenti in base ai ruoli aziendali.
+### Funzionalità Nice-to-have:
 
-4. **Aggiornamenti in tempo reale**: Se possibile, fornire funzionalità di aggiornamento in tempo reale per consentire agli utenti di vedere immediatamente le modifiche apportate alla rubrica da altri membri del team.
-
-5. **Integrazione con dispositivi e applicazioni**: Se necessario, consentire l'integrazione della rubrica con dispositivi mobili o applicazioni di gestione delle email per una maggiore praticità e accessibilità.
-
-6. **Interfaccia utente intuitiva**: Un'interfaccia utente chiara, intuitiva e facile da usare che permetta agli utenti di navigare senza difficoltà attraverso le varie funzionalità.
+1. Aggiornamenti in Tempo Reale: Implementa aggiornamenti in tempo reale per consentire agli utenti di visualizzare immediatamente le modifiche apportate alla rubrica.
+2. Integrazione Mobile: Consente l'integrazione della rubrica con dispositivi mobili per un accesso facile e veloce anche in movimento.
+3. Reportistica Avanzata: Aggiunge la possibilità di generare report dettagliati sulla base dei dati presenti nella rubrica per analisi e valutazioni più approfondite.
