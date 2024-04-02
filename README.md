@@ -21,7 +21,8 @@ L'obiettivo di questa fase è trasmettere un metodo di approccio ai progetti.
 Terminata la prima fase, i team inizieranno a lavorare in modo indipendente, comunicando attraverso i gruppi Telegram che sono stati creati nei giorni precedenti. 
 
 #### Fase 2: analisi e architettura
-Durante questa fase i team analizzeranno i requisiti, ed inizieranno a ragionare su un'architettura da dare al progetto, scegliendo anche quelle che sarà lo stack tecnologico.
+Durante questa fase i team analizzeranno i requisiti, ed inizieranno a ragionare su un'architettura da dare al progetto, scegliendo anche quelle che sarà lo stack tecnologico, sulla base della loro stessa analisi.
+Quest'attività è volutamente lasciata in capo ai team, che saranno comunque seguiti, poichè è parte integrante delle dinamiche lavorative quando ci si approccia a nuovi progetti.
 
 #### Fase 3: Sviluppo
 I team svilupperanno la loro soluzione, concentrandosi su di una funzionalità principale, con l'obiettivo di concluderla entro la sera del 3 Aprile.
