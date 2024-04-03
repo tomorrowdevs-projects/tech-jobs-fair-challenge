@@ -12,7 +12,7 @@ const ContactsView = () => {
     company: "",
     position: "",
   });
-  const contacts = useContacts();
+  const contacts = useContacts(filters);
 
   return (
     <Container>

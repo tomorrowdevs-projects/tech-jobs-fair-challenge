@@ -7,7 +7,7 @@ const mockContacts = [
   // Add more contacts as needed
 ];
 
-export const useContacts = () => {
+export const useContacts = (filters) => {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
