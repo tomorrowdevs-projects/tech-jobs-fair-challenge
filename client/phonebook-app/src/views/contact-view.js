@@ -5,18 +5,20 @@ import ContactTable from "../components/contact-table";
 import { useContacts } from "../hooks/useContacts"; // Assuming the custom hook's path
 
 const ContactsView = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [filters, setFilters] = useState({
+    name: "",
+    address: "",
+    email: "",
+    company: "",
+    position: "",
+  });
   const contacts = useContacts();
-
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   return (
     <Container>
       <h1>Contacts</h1>
-      <ContactFilter onSearchChange={setSearchTerm} />
-      <ContactTable contacts={filteredContacts} />
+      <ContactFilter onFiltersChange={setFilters} />
+      <ContactTable contacts={contacts} />
     </Container>
   );
 };
