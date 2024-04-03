@@ -2,13 +2,23 @@ openapi: 3.0.0
 info:
   title: API degli utenti e dei contatti
   version: '1.0.0'
-security:
-  - password:
-    - read
-    - write
+tags:
+  - name: User
+    description: Everything about your User
+  - name: Contact
+    description: Everything about your Contact
+  - name: Department
+    description: Everything about your Department
+  - name: Categories
+    description: Everything about your Categories
 paths:
   /users:
     get:
+      tags: 
+        - User
+      security:
+        - JWTAuth:
+            - basic
       summary: Restituisce una lista di utenti
       responses:
         '200':
@@ -20,6 +30,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/User'
     post:
+      tags: 
+          - User
       summary: Crea un nuovo utente
       requestBody:
         required: true
@@ -43,6 +55,8 @@ paths:
           format: int64
         description: ID dell'utente
     get:
+      tags: 
+          - User
       summary: Restituisce un utente specificato dall'ID
       responses:
         '200':
@@ -54,6 +68,8 @@ paths:
         '404':
           description: Utente non trovato
     put:
+      tags: 
+          - User
       summary: Aggiorna un utente esistente
       parameters:
         - in: path
@@ -77,6 +93,8 @@ paths:
         '404':
           description: Utente non trovato
     delete:
+      tags: 
+        - User
       summary: Elimina un utente esistente
       parameters:
         - in: path
@@ -94,6 +112,8 @@ paths:
 
   /contacts:
     get:
+      tags: 
+        - Contact
       summary: Restituisce una lista di contatti
       responses:
         '200':
@@ -105,6 +125,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Contact'
     post:
+      tags: 
+        - Contact
       summary: Crea un nuovo contatto
       requestBody:
         required: true
@@ -128,6 +150,8 @@ paths:
           format: int64
         description: ID del contatto
     get:
+      tags: 
+        - Contact
       summary: Restituisce un contatto specificato dall'ID
       responses:
         '200':
@@ -139,6 +163,8 @@ paths:
         '404':
           description: Contatto non trovato
     put:
+      tags: 
+        - Contact
       summary: Aggiorna un contatto esistente
       parameters:
         - in: path
@@ -162,6 +188,8 @@ paths:
         '404':
           description: Contatto non trovato
     delete:
+      tags: 
+        - Contact
       summary: Elimina un contatto esistente
       parameters:
         - in: path
@@ -179,6 +207,8 @@ paths:
 
   /departments:
     get:
+      tags: 
+        - Department
       summary: Restituisce una lista di dipartimenti
       responses:
         '200':
@@ -190,6 +220,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Department'
     post:
+      tags: 
+        - Department
       summary: Crea un nuovo dipartimento
       requestBody:
         required: true
@@ -213,6 +245,8 @@ paths:
           format: int64
         description: ID del dipartimento
     get:
+      tags: 
+        - Department
       summary: Restituisce un dipartimento specificato dall'ID
       responses:
         '200':
@@ -224,6 +258,8 @@ paths:
         '404':
           description: Dipartimento non trovato
     put:
+      tags: 
+        - Department
       summary: Aggiorna un dipartimento esistente
       parameters:
         - in: path
@@ -247,6 +283,8 @@ paths:
         '404':
           description: Dipartimento non trovato
     delete:
+      tags: 
+        - Department
       summary: Elimina un dipartimento esistente
       parameters:
         - in: path
@@ -264,6 +302,8 @@ paths:
 
   /categories:
     get:
+      tags: 
+        - Categories
       summary: Restituisce una lista di categorie
       responses:
         '200':
@@ -275,6 +315,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/Category'
     post:
+      tags: 
+        - Categories
       summary: Crea una nuova categoria
       requestBody:
         required: true
@@ -298,6 +340,8 @@ paths:
           format: int64
         description: ID della categoria
     get:
+      tags: 
+        - Categories
       summary: Restituisce una categoria specificata dall'ID
       responses:
         '200':
@@ -309,6 +353,8 @@ paths:
         '404':
           description: Categoria non trovata
     put:
+      tags: 
+        - Categories
       summary: Aggiorna una categoria esistente
       parameters:
         - in: path
@@ -332,6 +378,8 @@ paths:
         '404':
           description: Categoria non trovata
     delete:
+      tags: 
+        - Categories
       summary: Elimina una categoria esistente
       parameters:
         - in: path
@@ -349,13 +397,50 @@ paths:
 
 
 components:
+  securitySchemes:
+    JWTAuth:
+      type: apiKey
+      name: Authorization
+      in: header
+      x-permissions:
+        admin:
+          - read
+          - write
+          - authorize
+        maintainer:
+          - read
+          - update
+          - create
+          - delete_own_resource
+        basic:
+          - read
+          - update_own_profile
   schemas:
+    Audit:
+      type: object
+      properties:
+        Creation_date:
+          type: string
+          format: date-time
+          description: Data di creazione
+        Update_date:
+          type: string
+          format: date-time
+          description: Data di aggiornamento
+        Created_by:
+          type: string
+          description: Utente che ha creato
+        Updated_by:
+          type: string
+          description: Utente che ha aggiornato
     User:
       type: object
       required:
         - firstname
         - email
         - lastname
+        - password
+        - role
       properties:
         id:
           type: integer
@@ -381,12 +466,16 @@ components:
         role:
           type: string
           example: [basic, maintainer, admin, super-admin]
+        audit:
+          $ref: '#/components/schemas/Audit'
     Contact:
       type: object
       required:
         - firstname
         - email
         - lastname
+        - phoneNumber
+        - category
       properties:
         id:
           type: integer
@@ -407,7 +496,9 @@ components:
           type: string
           description: il numero di telefono del contatto
         department:
-          $ref: '#/components/schemas/Department'
+          type: array
+          items:
+            $ref: '#/components/schemas/Department'
         category:
           $ref: '#/components/schemas/Category'
         socials:
@@ -439,6 +530,8 @@ components:
         SDI:
           type: string
           description: il codice SDI del contatto
+        audit:
+          $ref: '#/components/schemas/Audit'
     Department:
       type: object
       properties:
@@ -449,6 +542,8 @@ components:
         name:
           type: string
           example: Marketing, Designer, BusinessDeveloper
+        audit:
+          $ref: '#/components/schemas/Audit'
     Category:
       type: object
       properties:
@@ -459,3 +554,5 @@ components:
         name:
           type: string
           example: Customer Employers Partners
+        audit:
+          $ref: '#/components/schemas/Audit'
