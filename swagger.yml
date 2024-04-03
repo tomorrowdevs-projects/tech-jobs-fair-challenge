@@ -1,0 +1,461 @@
+openapi: 3.0.0
+info:
+  title: API degli utenti e dei contatti
+  version: '1.0.0'
+security:
+  - password:
+    - read
+    - write
+paths:
+  /users:
+    get:
+      summary: Restituisce una lista di utenti
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: Crea un nuovo utente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: Crea con successo
+        '400':
+          description: Richiesta non valida
+
+  /users/{userId}:
+    parameters:
+      - in: path
+        name: userId
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID dell'utente
+    get:
+      summary: Restituisce un utente specificato dall'ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: Utente non trovato
+    put:
+      summary: Aggiorna un utente esistente
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID dell'utente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Successo
+        '400':
+          description: Richiesta non valida
+        '404':
+          description: Utente non trovato
+    delete:
+      summary: Elimina un utente esistente
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID dell'utente
+      responses:
+        '204':
+          description: Nessun contenuto
+        '404':
+          description: Utente non trovato
+
+  /contacts:
+    get:
+      summary: Restituisce una lista di contatti
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contact'
+    post:
+      summary: Crea un nuovo contatto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        '201':
+          description: Crea con successo
+        '400':
+          description: Richiesta non valida
+
+  /contacts/{contactId}:
+    parameters:
+      - in: path
+        name: contactId
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID del contatto
+    get:
+      summary: Restituisce un contatto specificato dall'ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '404':
+          description: Contatto non trovato
+    put:
+      summary: Aggiorna un contatto esistente
+      parameters:
+        - in: path
+          name: contactId
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID del contatto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+      responses:
+        '200':
+          description: Successo
+        '400':
+          description: Richiesta non valida
+        '404':
+          description: Contatto non trovato
+    delete:
+      summary: Elimina un contatto esistente
+      parameters:
+        - in: path
+          name: contactId
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID del contatto
+      responses:
+        '204':
+          description: Nessun contenuto
+        '404':
+          description: Contatto non trovato
+
+  /departments:
+    get:
+      summary: Restituisce una lista di dipartimenti
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+    post:
+      summary: Crea un nuovo dipartimento
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+      responses:
+        '201':
+          description: Crea con successo
+        '400':
+          description: Richiesta non valida
+
+  /departments/{departmentId}:
+    parameters:
+      - in: path
+        name: departmentId
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID del dipartimento
+    get:
+      summary: Restituisce un dipartimento specificato dall'ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+        '404':
+          description: Dipartimento non trovato
+    put:
+      summary: Aggiorna un dipartimento esistente
+      parameters:
+        - in: path
+          name: departmentId
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID del dipartimento
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+      responses:
+        '200':
+          description: Successo
+        '400':
+          description: Richiesta non valida
+        '404':
+          description: Dipartimento non trovato
+    delete:
+      summary: Elimina un dipartimento esistente
+      parameters:
+        - in: path
+          name: departmentId
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID del dipartimento
+      responses:
+        '204':
+          description: Nessun contenuto
+        '404':
+          description: Dipartimento non trovato
+
+  /categories:
+    get:
+      summary: Restituisce una lista di categorie
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+    post:
+      summary: Crea una nuova categoria
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '201':
+          description: Crea con successo
+        '400':
+          description: Richiesta non valida
+
+  /categories/{categoryId}:
+    parameters:
+      - in: path
+        name: categoryId
+        required: true
+        schema:
+          type: integer
+          format: int64
+        description: ID della categoria
+    get:
+      summary: Restituisce una categoria specificata dall'ID
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '404':
+          description: Categoria non trovata
+    put:
+      summary: Aggiorna una categoria esistente
+      parameters:
+        - in: path
+          name: categoryId
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID della categoria
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+      responses:
+        '200':
+          description: Successo
+        '400':
+          description: Richiesta non valida
+        '404':
+          description: Categoria non trovata
+    delete:
+      summary: Elimina una categoria esistente
+      parameters:
+        - in: path
+          name: categoryId
+          required: true
+          schema:
+            type: integer
+            format: int64
+          description: ID della categoria
+      responses:
+        '204':
+          description: Nessun contenuto
+        '404':
+          description: Categoria non trovata
+
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - firstname
+        - email
+        - lastname
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        email:
+          type: string
+          example: mycompany@gmail.com
+        firstname:
+          type: string
+          example: Mario
+          description: il nome dell'utente
+        lastname: 
+          type: string
+          example: Rossi
+          description: il cognome dell'utente
+        password: 
+          type: string
+          description: la password dell'utente 
+        phoneNumber: 
+          type: string
+          description: il numero di telefono dell'utente 
+        role:
+          type: string
+          example: [basic, maintainer, admin, super-admin]
+    Contact:
+      type: object
+      required:
+        - firstname
+        - email
+        - lastname
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        email:
+          type: string
+          example: mycompany@gmail.com
+        firstname:
+          type: string
+          example: Mario
+          description: il nome del contatto
+        lastname: 
+          type: string
+          example: Rossi
+          description: il cognome del contatto
+        phoneNumber: 
+          type: string
+          description: il numero di telefono del contatto
+        department:
+          $ref: '#/components/schemas/Department'
+        category:
+          $ref: '#/components/schemas/Category'
+        socials:
+          type: array
+          items:
+            type: string
+          description: i profili social del contatto
+        country:
+          type: string
+          description: il paese del contatto
+        region:
+          type: string
+          description: la regione del contatto
+        address:
+          type: string
+          description: l'indirizzo del contatto
+        city:
+          type: string
+          description: la città del contatto
+        zipcode:
+          type: string
+          description: il codice postale del contatto
+        vat:
+          type: string
+          description: il codice fiscale del contatto
+        companyName:
+          type: string
+          description: il nome della società del contatto
+        SDI:
+          type: string
+          description: il codice SDI del contatto
+    Department:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        name:
+          type: string
+          example: Marketing, Designer, BusinessDeveloper
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 100000
+        name:
+          type: string
+          example: Customer Employers Partners
