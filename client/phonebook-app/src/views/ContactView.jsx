@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
-import ContactFilter from "../components/contact-filter";
-import ContactTable from "../components/contact-table";
+import ContactFilter from "../components/ContactFilter";
+import ContactTable from "../components/ContactTable";
 import { useContacts } from "../hooks/useContacts"; // Assuming the custom hook's path
 
 const ContactsView = () => {

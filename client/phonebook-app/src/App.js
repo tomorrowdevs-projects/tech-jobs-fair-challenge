@@ -1,13 +1,21 @@
-import "./App.css";
-import Header from "./components/header";
-import ContactsView from "./views/contact-view";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import ContactsView from "./views/ContactView";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="App">
+    <BrowserRouter>
       <Header />
-      <ContactsView />
-    </div>
+      <Routes>
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/contacts" element={<ContactsView />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
