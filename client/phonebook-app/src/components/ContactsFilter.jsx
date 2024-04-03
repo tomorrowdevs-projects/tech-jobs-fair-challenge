@@ -1,6 +1,6 @@
 import { Row, Col, Form } from "react-bootstrap";
 
-const ContactFilter = ({ onFiltersChange }) => {
+const ContactsFilter = ({ onFiltersChange }) => {
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     console.log(`Filter changed - ${name}: ${value}`);
@@ -59,4 +59,4 @@ const ContactFilter = ({ onFiltersChange }) => {
   );
 };
 
-export default ContactFilter;
+export default ContactsFilter;

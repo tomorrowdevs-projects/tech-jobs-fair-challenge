@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import ContactsView from "./views/ContactView";
+import ContactsView from "./views/ContactsView";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import "bootstrap/dist/css/bootstrap.min.css";

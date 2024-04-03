@@ -1,4 +1,4 @@
-const ContactTable = ({ contacts }) => {
+const ContactsTable = ({ contacts }) => {
   return (
     <div>
       <ul>
@@ -12,4 +12,4 @@ const ContactTable = ({ contacts }) => {
   );
 };
 
-export default ContactTable;
+export default ContactsTable;
