@@ -1,5 +1,11 @@
+import ContactPage from "./components/contactsPage/ContactPage"
+
 function App() {
-    return <h1 className="text-3xl font-bold underline">Hello world!</h1>
+    return (
+        <>
+            <ContactPage />
+        </>
+    )
 }
 
 export default App
