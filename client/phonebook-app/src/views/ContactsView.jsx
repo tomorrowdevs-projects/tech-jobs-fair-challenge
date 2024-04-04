@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import ContactsFilter from "../components/ContactsFilter";
-import ContactsList from "../components/ContactsList";
+import ContactsGrid from "../components/ContactsGrid";
 import { useContacts } from "../hooks/useContacts"; // Assuming the custom hook's path
+import AddContactButton from "../components/AddContactButton";
 
 const ContactsView = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,10 +17,10 @@ const ContactsView = () => {
           <ContactsFilter onSearchTermChange={setSearchTerm} />
         </Col>
         <Col className="col-auto">
-          <Button variant="dark">Add Contact</Button>
+          <AddContactButton />
         </Col>
       </Row>
-      <ContactsList contacts={contacts} />
+      <ContactsGrid contacts={contacts} />
     </Container>
   );
 };
