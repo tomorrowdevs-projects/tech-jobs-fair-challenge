@@ -1,9 +1,9 @@
-import ContactPage from "./components/contactsPage/ContactPage"
+import Dashboard from "./components/Dashboard/Dashboard"
 
 function App() {
     return (
         <>
-            <ContactPage />
+            <Dashboard />
         </>
     )
 }
