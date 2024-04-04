@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./login.css";
-import axios from "axios"
+import axios from "axios";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -13,27 +13,34 @@ const Login = () => {
     console.log("Password:", password);
     const user = {
       username: username,
-      password: password
+      password: password,
     };
     try {
-      const response = await axios.post(`/web/auth/login`, user);
-  
-      if (!response.ok) {
-        throw new Error(`Errore nella richiesta: ${response.status}`);
-      } 
-  
-      const data = await response.json();
-      console.log("Risultato della ricerca:", data);
-  
-      // setResult(data); // Se setResult è una funzione di stato, puoi impostare i dati di risposta come stato qui
-    } catch (errore) {
-      console.error("Errore durante la ricerca:", errore.message);
+      const response = await axios.post(
+        "https://tjf-challenge.azurewebsites.net/web/auth/login",
+        user
+      );
+
+      const data = response.data;
+      console.log("Response data:", data);
+
+      // Salva il token utente nel localStorage o in un cookie per l'autenticazione
+
+      // Resetta lo stato degli input
+      setUsername("");
+      setPassword("");
+      setError(null);
+    } catch (error) {
+      console.error("Errore durante la richiesta:", error);
+      setError("Credenziali non valide.");
     }
   };
-  
+
   return (
     <div className="login">
-      <h1>Login</h1>
+      
+      <img src="../public/favicon.ico" alt="" className="h-[150px] w-[300px]" />
+    
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -51,8 +58,9 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+        {error && <div className="error">{error}</div>}
         <button type="submit" className="btn btn-primary btn-block btn-large">
-          Let me in
+          Login
         </button>
       </form>
     </div>
