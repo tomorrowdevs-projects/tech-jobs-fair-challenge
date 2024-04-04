@@ -6,7 +6,8 @@ import { useContacts } from "../hooks/useContacts"; // Assuming the custom hook'
 
 const ContactsView = () => {
   const [filters, setFilters] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     address: "",
     email: "",
     company: "",

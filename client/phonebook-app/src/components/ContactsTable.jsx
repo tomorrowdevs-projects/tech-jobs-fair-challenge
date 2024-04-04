@@ -6,7 +6,8 @@ const ContactsTable = ({ contacts }) => {
       <thead>
         <tr>
           <th>#</th>
-          <th>Name</th>
+          <th>First Name</th>
+          <th>Last Name</th>
           <th>Email</th>
           <th>Telephone Number</th>
           <th>Address</th>
@@ -18,7 +19,8 @@ const ContactsTable = ({ contacts }) => {
         {contacts.map((contact, index) => (
           <tr key={contact.id}>
             <td>{index + 1}</td>
-            <td>{contact.name}</td>
+            <td>{contact.firstName}</td>
+            <td>{contact.lastName}</td>
             <td>{contact.email}</td>
             <td>{contact.telephoneNumber}</td>
             <td>{contact.address}</td>
