@@ -1,19 +1,11 @@
 import { useState } from "react"
 import data from "../../data/fakeUsers"
 import Searchbar from "./Searchbar"
+import Dropdown from "../UI/Dropdown"
 
 const ContactPage = () => {
     const [result, setResult] = useState()
     // const [posts, setPosts] = useState([])
-
-    const [openDropdowns, setOpenDropdowns] = useState({})
-
-    const toggleDropdown = (dropdownID) => {
-        setOpenDropdowns((prevOpenDropdowns) => ({
-            ...prevOpenDropdowns,
-            [dropdownID]: !prevOpenDropdowns[dropdownID],
-        }))
-    }
 
     return (
         <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
@@ -26,9 +18,10 @@ const ContactPage = () => {
                         <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
                             <button
                                 id="add-product"
+                                aria-expanded="true"
+                                aria-haspopup="true"
                                 type="button"
                                 className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
-                                onClick={() => toggleDropdown("add-product")}
                             >
                                 <svg
                                     className="h-3.5 w-3.5 mr-2"
@@ -46,14 +39,12 @@ const ContactPage = () => {
                                 Add product
                             </button>
                             <div className="flex items-center space-x-3 w-full md:w-auto">
-                                <button
+                                {/* <button
                                     id="filter-dropdown"
-                                    data-dropdown-toggle="filterDropdown"
+                                    aria-expanded="true"
+                                    aria-haspopup="true"
                                     className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                                     type="button"
-                                    onClick={() =>
-                                        toggleDropdown("filter-dropdown")
-                                    }
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -85,6 +76,10 @@ const ContactPage = () => {
                                 </button>
                                 <div
                                     id="filter-dropdown"
+                                    role="menu"
+                                    aria-orientation="vertical"
+                                    aria-labelledby="menu-button"
+                                    tabIndex="-1"
                                     className="z-10 hidden w-48 p-3 bg-white rounded-lg shadow dark:bg-gray-700"
                                 >
                                     <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white">
@@ -165,7 +160,8 @@ const ContactPage = () => {
                                             </label>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> */}
+                                <Dropdown />
                             </div>
                         </div>
                     </div>
