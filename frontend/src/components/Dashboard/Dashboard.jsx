@@ -1,11 +1,10 @@
 import Navbar from "../Navbar/Navbar"
-import ContactPage from "../contactsPage/ContactPage"
-
+import ContactsPage from './../ContactsPage/ContactsPage'
 const Dashboard = () => {
     return (
         <>
             <Navbar />
-            <ContactPage />
+            <ContactsPage />
         </>
     )
 }
