@@ -1,11 +1,14 @@
 import { useState } from "react"
-import Dropdown from "../UI/DropdownFilters"
+import DropdownFilters from "../UI/DropdownFilters"
 import ContactsList from "./ContactsList"
 import Searchbar from "./Searchbar"
 
 const ContactPage = () => {
     const [result, setResult] = useState()
     const [contacts, setContacts] = useState([])
+    // const [filter, setFilter] = useState("")
+
+    const [filter, setFilter] = useState("")
 
     // useEffect(() => {
     //     // Altrimenti, li utilizzo per fare una chiamata API e recuperare i dati dell'utente
@@ -39,7 +42,7 @@ const ContactPage = () => {
                 >
                     <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                         <div className="w-full md:w-1/2">
-                            <Searchbar setResult={setResult} />
+                            <Searchbar setResult={setResult} filter={filter} />
                         </div>
                         <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
                             <button
@@ -65,7 +68,10 @@ const ContactPage = () => {
                                 Add product
                             </button>
                             <div className="flex items-center space-x-3 w-full md:w-auto">
-                                <Dropdown />
+                                <DropdownFilters
+                                    filter={filter}
+                                    setFilter={setFilter}
+                                />
                             </div>
                         </div>
                     </div>

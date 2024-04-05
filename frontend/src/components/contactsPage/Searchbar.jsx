@@ -1,13 +1,15 @@
 import { useState } from "react"
 const Searchbar = (props) => {
-    const { setResult } = props
+    const { setResult, filter } = props
     const [query, setQuery] = useState("")
 
     const handleSearch = async (e) => {
         e.preventDefault()
 
         try {
-            const response = await fetch(`../../data/fakeUsers?name=${query}`)
+            const response = await fetch(
+                `../../data/fakeUsers?${filter}=${query}`
+            )
 
             if (!response.ok) {
                 throw new Error(`Errore nella richiesta: ${response.status}`)
