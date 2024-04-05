@@ -52,8 +52,7 @@ export default function Dropdown() {
 
                         <Menu.Item>
                             {({ active }) => (
-                                <a
-                                    href="/"
+                                <button
                                     className={classNames(
                                         active
                                             ? "bg-gray-600 text-white"
@@ -62,7 +61,7 @@ export default function Dropdown() {
                                     )}
                                 >
                                     Logout
-                                </a>
+                                </button>
                             )}
                         </Menu.Item>
                     </div>

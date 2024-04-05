@@ -10,28 +10,7 @@ const ContactPage = () => {
 
     const [filter, setFilter] = useState("")
 
-    // useEffect(() => {
-    //     // Altrimenti, li utilizzo per fare una chiamata API e recuperare i dati dell'utente
-    //     fetch(`${import.meta.env.VITE_MY_PORT}/api/authors/${userId}`, {
-    //         headers: { Authorization: `Bearer ${token}` },
-    //     })
-    //         .then((response) => {
-    //             if (!response.ok) {
-    //                 throw new Error()
-    //             }
-    //             return response.json()
-    //         })
-
-    //         .then((user) => {
-    //             // Se la chiamata API va a buon fine mostro i dati dell'utente
-
-    //             setUser(true)
-    //         })
-    //         .catch(() => {
-    //             // Se la chiamata API fallisce reindirizzo l'utente alla pagina di login
-    //             navigate("/")
-    //         })
-    // }, [token, userId])
+    //INserire use Effect per mantenere la sessione utente attiva
 
     return (
         <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
@@ -40,11 +19,17 @@ const ContactPage = () => {
                     className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden"
                     style={{ minHeight: "650px" }}
                 >
-                    <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-                        <div className="w-full md:w-1/2">
+                    <div className="grid grid-rows-2 grid-cols-4 lg:grid-cols-3 gap-2 items-center justify-between  p-4">
+                        <div className="col-span-3 lg:row-span-3">
                             <Searchbar setResult={setResult} filter={filter} />
                         </div>
-                        <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                        <div className="lg:row-span-3 col-span-2">
+                            <DropdownFilters
+                                filter={filter}
+                                setFilter={setFilter}
+                            />
+                        </div>
+                        <div className="lg:row-span-3 col-span-2">
                             <button
                                 id="add-product"
                                 aria-expanded="true"
@@ -65,14 +50,8 @@ const ContactPage = () => {
                                         d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                                     />
                                 </svg>
-                                Add product
+                                Add Contact
                             </button>
-                            <div className="flex items-center space-x-3 w-full md:w-auto">
-                                <DropdownFilters
-                                    filter={filter}
-                                    setFilter={setFilter}
-                                />
-                            </div>
                         </div>
                     </div>
                     <div
@@ -89,16 +68,16 @@ const ContactPage = () => {
                                         Last Name
                                     </th>
                                     <th scope="col" className="px-4 py-3">
-                                        Role
+                                        Phone
                                     </th>
                                     <th scope="col" className="px-4 py-3">
-                                        Phone
+                                        Address
                                     </th>
                                     <th
                                         scope="col hidden lg:flex"
                                         className="px-4 py-3"
                                     >
-                                        Address
+                                        Social Account
                                     </th>
                                     <th
                                         scope="col hidden lg:flex"
