@@ -1,7 +1,7 @@
-import ContactsList from "./ContactsList"
 import Searchbar from "./Searchbar"
 import Dropdown from "../UI/DropdownFilters"
 import { useState } from "react"
+import ContactsList from "./ContactsList"
 
 const ContactPage = () => {
     const [result, setResult] = useState()
