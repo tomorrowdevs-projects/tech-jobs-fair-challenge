@@ -1,22 +1,15 @@
 from rest_framework import generics
-from .models import Company, Contact
-from .serializers import CompanySerializer, ContactSerializer
-from .filters import ContactFilterBackend
+from .models import Contact, ContactInfo
+from .serializers import ContactSerializer
+from .filters import ContactSearchFilterBackend
 
 
-class CompanyListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Company.objects.all()
-    serializer_class = CompanySerializer
-
-class CompanyRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Company.objects.all()
-    serializer_class = CompanySerializer
-
-class ContactListAPIView(generics.ListAPIView):
-    queryset = Contact.objects.all().select_related('company')
-    serializer_class = ContactSerializer
-    filter_backends = [ContactFilterBackend]
-
-class ContactRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+class ContactListCreateAPIView(generics.ListCreateAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+    filter_class = ContactSearchFilterBackend
+
+class ContactRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+
