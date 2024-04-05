@@ -1,8 +1,7 @@
 import { useState } from "react"
-import data from "../../data/fakeUsers"
-import Searchbar from "./Searchbar"
 import Dropdown from "../UI/DropdownFilters"
 import ContactsList from "./ContactsList"
+import Searchbar from "./Searchbar"
 
 const ContactPage = () => {
     const [result, setResult] = useState()

@@ -1,36 +1,26 @@
 import { useState } from "react"
-import fakeUsers from "../../data/fakeUsers"
 const Searchbar = (props) => {
     const { setResult } = props
     const [query, setQuery] = useState("")
 
-    //Fetch ricerca articoli
     const handleSearch = async (e) => {
         e.preventDefault()
 
-        const filteredUsers = fakeUsers.filter((user) =>
-            user.firstName?.toLowerCase().includes(query.toLowerCase())
-        )
+        try {
+            const response = await fetch(`../../data/fakeUsers?name=${query}`)
 
-        setResult(filteredUsers)
-        console.log(filteredUsers)
-        console.log("ricerca inviata")
+            if (!response.ok) {
+                throw new Error(`Errore nella richiesta: ${response.status}`)
+            }
+
+            const data = await response.json()
+            // console.log("Risultato della ricerca:", data)
+
+            setResult(data)
+        } catch (errore) {
+            console.error("Errore durante la ricerca:", errore.message)
+        }
     }
-    // try {
-    //     const response = await fetch(`../../data/fakeUsers?name=${query}`)
-
-    //     if (!response.ok) {
-    //         throw new Error(`Errore nella richiesta: ${response.status}`)
-    //     }
-
-    //     const data = await response.json()
-    //     // console.log("Risultato della ricerca:", data)
-
-    //     setResult(data)
-    // } catch (errore) {
-    //     console.error("Errore durante la ricerca:", errore.message)
-
-    //}}
     return (
         <form className="flex items-center" onSubmit={handleSearch}>
             <label htmlFor="simple-search" className="sr-only">
