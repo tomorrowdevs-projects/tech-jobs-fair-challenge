@@ -1,35 +1,11 @@
-import { useState } from "react"
-import data from "../../data/fakeUsers"
+import ContactsList from "./ContactsList"
 import Searchbar from "./Searchbar"
 import Dropdown from "../UI/DropdownFilters"
-import ContactsList from "./ContactsList"
+import { useState } from "react"
 
 const ContactPage = () => {
     const [result, setResult] = useState()
     const [contacts, setContacts] = useState([])
-
-    // useEffect(() => {
-    //     // Altrimenti, li utilizzo per fare una chiamata API e recuperare i dati dell'utente
-    //     fetch(`${import.meta.env.VITE_MY_PORT}/api/authors/${userId}`, {
-    //         headers: { Authorization: `Bearer ${token}` },
-    //     })
-    //         .then((response) => {
-    //             if (!response.ok) {
-    //                 throw new Error()
-    //             }
-    //             return response.json()
-    //         })
-
-    //         .then((user) => {
-    //             // Se la chiamata API va a buon fine mostro i dati dell'utente
-
-    //             setUser(true)
-    //         })
-    //         .catch(() => {
-    //             // Se la chiamata API fallisce reindirizzo l'utente alla pagina di login
-    //             navigate("/")
-    //         })
-    // }, [token, userId])
 
     return (
         <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">

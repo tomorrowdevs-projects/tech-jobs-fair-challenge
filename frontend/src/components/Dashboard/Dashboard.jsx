@@ -1,5 +1,5 @@
 import Navbar from "../Navbar/Navbar"
-import ContactsPage from './../ContactsPage/ContactsPage'
+import ContactsPage from "./../contactsPage/ContactsPage"
 const Dashboard = () => {
     return (
         <>
