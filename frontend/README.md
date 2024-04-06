@@ -1,56 +1,70 @@
-# Tech Jobs Fair Challenge 2024
+# Getting Started with Create React App
 
-L'obiettivo finale dell'attività è lavorare su di un progetto ripercorrendo le stesse modalità di lavoro in azienda.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Lo strumento per raggiungere tale obiettivo sarà la realizzazione di un MVP in 2 fasi.
+## Available Scripts
 
-La **prima fase** si completerà **Mercoledì 3 Aprile**, in cui i team cercheranno di analizzare il progetto, definirne l'architettura e completare almeno una funzionalità.
+In the project directory, you can run:
 
-La **seconda fase** avrà luogo nei giorni successivi, interamente in asincrono, e si completerà **Sabato 6 Aprile**, quando tutti i team termineranno il loro lavoro.
+### `npm start`
 
-## Calendario Attività:
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-### Mercoledi 3 Aprile 2024
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-#### Ore 9.00: Meeting di ritrovo su [link zoom] e saluti
+### `npm test`
 
-#### Fase 1: brainstorming progetto
-In call con tutti i team, verranno raccolti i requisiti attraverso una sessione di domande e risposte.
-L'obiettivo di questa fase è trasmettere un metodo di approccio ai progetti.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Terminata la prima fase, i team inizieranno a lavorare in modo indipendente, comunicando attraverso i gruppi Telegram che sono stati creati nei giorni precedenti. 
+### `npm run build`
 
-#### Fase 2: analisi e architettura
-Durante questa fase i team analizzeranno i requisiti, ed inizieranno a ragionare su un'architettura da dare al progetto, scegliendo anche quelle che sarà lo stack tecnologico, sulla base della loro stessa analisi.
-Quest'attività è volutamente lasciata in capo ai team, che saranno comunque seguiti, poichè è parte integrante delle dinamiche lavorative quando ci si approccia a nuovi progetti.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-#### Fase 3: Sviluppo
-I team svilupperanno la loro soluzione, concentrandosi su di una funzionalità principale, con l'obiettivo di concluderla entro la sera del 3 Aprile.
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-#### Ore 19: Check con tutti i team su [link zoom]
-Al termine della giornata, ci si ritroverà tutti insieme in una chiamata Zoom per analizzare insieme il lavoro fin qui eseguito.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### 4,5,6 Aprile
-I team continueranno a lavorare in modo indipendente sui loro progetti, cercando di implementare più funzionalità possibili.
+### `npm run eject`
 
-### Sabato 6 Aprile, ore 17: Meeting finale su [link zoom] e saluti
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-# Requisito tecnico
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-## Progetto Rubrica Telefonica Aziendale per "TechSolutions Inc." (nome di fantasia)
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-### Scopo del Progetto:
-Il progetto mira a implementare una rubrica telefonica aziendale per TechSolutions Inc., una società di sviluppo software specializzata in soluzioni tecnologiche innovative. L'obiettivo principale è ottimizzare la gestione dei contatti interni ed esterni dell'azienda, migliorare la comunicazione tra dipartimenti e facilitare l'accesso rapido alle informazioni di contatto cruciali.
+## Learn More
 
-### Funzionalità Essenziali:
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-1. Gestione dei Contatti: Consente agli utenti di aggiungere, visualizzare, modificare ed eliminare i contatti aziendali, inclusi dipendenti, clienti e partner commerciali.
-2. Ricerca e Filtri: Implementa una funzionalità di ricerca avanzata e filtri per consentire agli utenti di trovare rapidamente i contatti desiderati.
-3. Interfaccia Utente Intuitiva: Offre un'interfaccia utente chiara e intuitiva per una navigazione senza problemi attraverso le funzionalità della rubrica.
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Funzionalità Nice-to-have:
+### Code Splitting
 
-1. Aggiornamenti in Tempo Reale: Implementa aggiornamenti in tempo reale per consentire agli utenti di visualizzare immediatamente le modifiche apportate alla rubrica.
-2. Integrazione Mobile: Consente l'integrazione della rubrica con dispositivi mobili per un accesso facile e veloce anche in movimento.
-3. Reportistica Avanzata: Aggiunge la possibilità di generare report dettagliati sulla base dei dati presenti nella rubrica per analisi e valutazioni più approfondite.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
