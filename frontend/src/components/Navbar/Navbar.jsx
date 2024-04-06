@@ -2,13 +2,13 @@ import DropdownAvatar from "./../UI/DropdownAvatar"
 const Navbar = () => {
     return (
         <header className="antialiased">
-            <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+            <nav className="bg-neutral border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-subdue">
                 <div className="flex flex-wrap justify-between items-center">
                     <div className="flex justify-start items-center">
                         <button
                             aria-expanded="true"
                             aria-controls="sidebar"
-                            className="p-2 mr-2 text-gray-600 rounded-lg cursor-pointer lg:hidden hover:text-gray-900 hover:bg-gray-100 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                            className="p-2 mr-2 text-vivid rounded-lg cursor-pointer lg:hidden hover:text-vivid hover:bg-neutral focus:bg-neutral dark:focus:bg-gray-700 focus:ring-2 focus:ring-neutral dark:focus:ring-subdue dark:text-neutral dark:hover:bg-subdue dark:hover:text-white"
                         >
                             <svg
                                 className="w-[18px] h-[18px]"
@@ -33,7 +33,7 @@ const Navbar = () => {
                                 className="mr-3 h-8"
                                 alt="FlowBite Logo"
                             />
-                            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-neutral">
                                 TechSolutions Inc.{" "}
                             </span>
                         </a>
@@ -52,22 +52,22 @@ const Navbar = () => {
 
                         <div
                             id="avatarButton"
-                            className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+                            className="z-10 hidden bg-neutral divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-vivid dark:divide-subdue"
                         >
-                            <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                            <div className="px-4 py-3 text-sm text-vivid dark:text-neutral">
                                 <div>Bonnie Green</div>
                                 <div className="font-medium truncate">
                                     name@flowbite.com
                                 </div>
                             </div>
                             <ul
-                                className="py-2 text-sm text-gray-700 dark:text-gray-200"
+                                className="py-2 text-sm text-vivid dark:text-neutral"
                                 aria-labelledby="avatarButton"
                             >
                                 <li>
                                     <a
                                         href="/"
-                                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        className="block px-4 py-2 hover:bg-neutral dark:hover:bg-subdue dark:hover:text-white"
                                     >
                                         Dashboard
                                     </a>
@@ -75,7 +75,7 @@ const Navbar = () => {
                                 <li>
                                     <a
                                         href="/"
-                                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        className="block px-4 py-2 hover:bg-neutral dark:hover:bg-subdue dark:hover:text-white"
                                     >
                                         Settings
                                     </a>
@@ -83,7 +83,7 @@ const Navbar = () => {
                                 <li>
                                     <a
                                         href="/"
-                                        className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        className="block px-4 py-2 hover:bg-neutral dark:hover:bg-subdue dark:hover:text-white"
                                     >
                                         Earnings
                                     </a>
@@ -92,7 +92,7 @@ const Navbar = () => {
                             <div className="py-1">
                                 <a
                                     href="/"
-                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                                    className="block px-4 py-2 text-sm text-subdue hover:bg-neutral dark:hover:bg-subdue dark:text-neutral dark:hover:text-white"
                                 >
                                     Sign out
                                 </a>

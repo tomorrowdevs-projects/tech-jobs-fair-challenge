@@ -47,7 +47,7 @@ const ContactList = (props) => {
                 <tr className="border-b dark:border-gray-700" key={`item-${i}`}>
                     <th
                         scope="row"
-                        className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="px-4 py-3 font-medium text-vivid whitespace-nowrap dark:text-white"
                     >
                         {contact.firstname}
                     </th>
@@ -59,7 +59,7 @@ const ContactList = (props) => {
                         <button
                             id="apple-imac-27-dropdown-button"
                             data-dropdown-toggle="apple-imac-27-dropdown"
-                            className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
+                            className="inline-flex items-center p-0.5 text-sm font-medium text-center text-subdue hover:text-vivid rounded-lg focus:outline-none dark:text-neutral dark:hover:text-white"
                             type="button"
                         >
                             <svg
@@ -74,16 +74,16 @@ const ContactList = (props) => {
                         </button>
                         <div
                             id="apple-imac-27-dropdown"
-                            className="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                            className="hidden z-10 w-44 bg-neutral rounded divide-y divide-subdue shadow dark:bg-vivid dark:divide-subdue"
                         >
                             <ul
-                                className="py-1 text-sm text-gray-700 dark:text-gray-200"
+                                className="py-1 text-sm text-vivid dark:text-neutral"
                                 aria-labelledby="apple-imac-27-dropdown-button"
                             >
                                 <li>
                                     <a
                                         href="/"
-                                        className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        className="block py-2 px-4 hover:bg-neutral dark:hover:bg-subdue dark:hover:text-white"
                                     >
                                         Show
                                     </a>
@@ -91,7 +91,7 @@ const ContactList = (props) => {
                                 <li>
                                     <a
                                         href="/"
-                                        className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        className="block py-2 px-4 hover:bg-neutral dark:hover:bg-subdue dark:hover:text-white"
                                     >
                                         Edit
                                     </a>
@@ -100,7 +100,7 @@ const ContactList = (props) => {
                             <div className="py-1">
                                 <a
                                     href="/"
-                                    className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                                    className="block py-2 px-4 text-sm text-vivid hover:bg-neutral dark:hover:bg-subdue dark:text-neutral dark:hover:text-white"
                                 >
                                     Delete
                                 </a>
