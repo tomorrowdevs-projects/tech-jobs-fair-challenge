@@ -5,10 +5,9 @@ const Searchbar = (props) => {
 
     const handleSearch = async (e) => {
         e.preventDefault()
-
         try {
             const response = await fetch(
-                `../../data/fakeUsers?${filter}=${query}`
+                `https://tjf-challenge.azurewebsites.net/web/people/list?firstname=${query}`
             )
 
             if (!response.ok) {
@@ -16,7 +15,6 @@ const Searchbar = (props) => {
             }
 
             const data = await response.json()
-            // console.log("Risultato della ricerca:", data)
 
             setResult(data)
         } catch (errore) {
