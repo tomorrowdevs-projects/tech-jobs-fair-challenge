@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import "./login.css";
 import axios from "axios";
+import App from "../Home/App";
+import ReactDOM from "react-dom/client"
 
-const Login = () => {
+
+
+const Login = (props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Username:", username);
@@ -21,11 +25,20 @@ const Login = () => {
         user
       );
 
-      const data = response.data;
-      console.log("Response data:", data);
+      let data = response.data;
+      console.log(data);
 
+        
       // Salva il token utente nel localStorage o in un cookie per l'autenticazione
+      // window.location.href = "../Home/App.jsx"
 
+      const root = ReactDOM.createRoot(document.getElementById("root"))
+      root.render(
+          <React.StrictMode>
+              <App />
+          </React.StrictMode>
+      )
+ 
       // Resetta lo stato degli input
       setUsername("");
       setPassword("");
@@ -35,11 +48,11 @@ const Login = () => {
       setError("Credenziali non valide.");
     }
   };
-
+console.log(window.location.href);
   return (
     <div className="login">
       
-      <img src="../public/favicon.ico" alt="" className="h-[150px] w-[300px]" />
+      <img src="logo_techsolutions_light.svg" alt="" className="h-[150px] w-[500px]" />
     
       <form onSubmit={handleSubmit}>
         <input

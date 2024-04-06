@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Navbar from "./components/Navbar/Navbar"
-import ContactsPage from "./components/contactsPage/ContactsPage"
-import UserProfile from "./components/UserProfile/UserProfile"
+import Navbar from "../Navbar/Navbar"
+import ContactsPage from "../contactsPage/ContactsPage"
+import UserProfile from "../UserProfile/UserProfile"
 
 function App() {
     return (
