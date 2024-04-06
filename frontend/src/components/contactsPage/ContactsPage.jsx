@@ -1,11 +1,16 @@
-import Searchbar from "./Searchbar"
-import Dropdown from "../UI/DropdownFilters"
 import { useState } from "react"
+import DropdownFilters from "../UI/DropdownFilters"
 import ContactsList from "./ContactsList"
+import Searchbar from "./Searchbar"
 
 const ContactPage = () => {
     const [result, setResult] = useState()
     const [contacts, setContacts] = useState([])
+    // const [filter, setFilter] = useState("")
+
+    const [filter, setFilter] = useState("")
+
+    //INserire use Effect per mantenere la sessione utente attiva
 
     return (
         <section className="bg-vivid dark:vivid p-3 sm:p-5">
@@ -14,11 +19,15 @@ const ContactPage = () => {
                     className="bg-neutral dark:bg-vivid relative shadow-md sm:rounded-lg overflow-hidden"
                     style={{ minHeight: "650px" }}
                 >
-                    <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
-                        <div className="w-full md:w-1/2">
-                            <Searchbar setResult={setResult} />
+                    <div className="container flex flex-wrap justify-between p-4">
+                        <div className="flex" style={{ order: "2" }}>
+                            <Searchbar setResult={setResult} filter={filter} />
+                            <DropdownFilters
+                                filter={filter}
+                                setFilter={setFilter}
+                            />
                         </div>
-                        <div className="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                        <div className="flex" style={{ order: "1" }}>
                             <button
                                 id="add-product"
                                 aria-expanded="true"
@@ -39,11 +48,8 @@ const ContactPage = () => {
                                         d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
                                     />
                                 </svg>
-                                Add product
+                                Add Contact
                             </button>
-                            <div className="flex items-center space-x-3 w-full md:w-auto">
-                                <Dropdown />
-                            </div>
                         </div>
                     </div>
                     <div
@@ -60,16 +66,16 @@ const ContactPage = () => {
                                         Last Name
                                     </th>
                                     <th scope="col" className="px-4 py-3">
-                                        Role
+                                        Phone
                                     </th>
                                     <th scope="col" className="px-4 py-3">
-                                        Phone
+                                        Address
                                     </th>
                                     <th
                                         scope="col hidden lg:flex"
                                         className="px-4 py-3"
                                     >
-                                        Address
+                                        Social Account
                                     </th>
                                     <th
                                         scope="col hidden lg:flex"

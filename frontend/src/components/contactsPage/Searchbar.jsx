@@ -1,21 +1,20 @@
 import { useState } from "react"
 const Searchbar = (props) => {
-    const { setResult } = props
+    const { setResult, filter } = props
     const [query, setQuery] = useState("")
 
-    //Fetch ricerca articoli
     const handleSearch = async (e) => {
         e.preventDefault()
-
         try {
-            const response = await fetch(`../../data/fakeUsers?name=${query}`)
+            const response = await fetch(
+                `https://tjf-challenge.azurewebsites.net/web/people/list?firstname=${query}`
+            )
 
             if (!response.ok) {
                 throw new Error(`Errore nella richiesta: ${response.status}`)
             }
 
             const data = await response.json()
-            // console.log("Risultato della ricerca:", data)
 
             setResult(data)
         } catch (errore) {

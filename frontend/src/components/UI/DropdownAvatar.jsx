@@ -1,12 +1,15 @@
 import { Menu, Transition } from "@headlessui/react"
 import { Fragment } from "react"
 import avatar from "../../assets/94.jpg"
+import { Link, useNavigate } from "react-router-dom"
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ")
 }
 
 export default function Dropdown() {
+    const navigate = useNavigate()
+
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
@@ -36,8 +39,8 @@ export default function Dropdown() {
                     <div className="py-1">
                         <Menu.Item>
                             {({ active }) => (
-                                <a
-                                    href="/"
+                                <Link
+                                    to={"/profile"}
                                     className={classNames(
                                         active
                                             ? "bg-subdue text-neutral"
@@ -46,23 +49,22 @@ export default function Dropdown() {
                                     )}
                                 >
                                     Profile
-                                </a>
+                                </Link>
                             )}
                         </Menu.Item>
 
                         <Menu.Item>
                             {({ active }) => (
-                                <a
-                                    href="/"
+                                <button
                                     className={classNames(
                                         active
-                                            ? "bg-subdue text-neutral"
-                                            : "text-neutral",
-                                        "block px-4 py-2 text-sm"
+                                            ? "bg-gray-600 text-white"
+                                            : "text-white",
+                                        "block px-4 py-2 text-sm cursor-pointer"
                                     )}
                                 >
                                     Logout
-                                </a>
+                                </button>
                             )}
                         </Menu.Item>
                     </div>
