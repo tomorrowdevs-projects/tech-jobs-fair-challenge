@@ -57,7 +57,7 @@ export default function Dropdown() {
                                         active
                                             ? "bg-gray-600 text-white"
                                             : "text-white",
-                                        "block px-4 py-2 text-sm"
+                                        "block px-4 py-2 text-sm cursor-pointer"
                                     )}
                                 >
                                     Logout

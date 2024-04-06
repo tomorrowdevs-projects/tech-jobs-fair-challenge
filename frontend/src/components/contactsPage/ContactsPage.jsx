@@ -19,17 +19,15 @@ const ContactPage = () => {
                     className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden"
                     style={{ minHeight: "650px" }}
                 >
-                    <div className="grid grid-rows-2 grid-cols-4 lg:grid-cols-3 gap-2 items-center justify-between  p-4">
-                        <div className="col-span-3 lg:row-span-3">
+                    <div className="container flex flex-wrap justify-between p-4">
+                        <div className="flex" style={{ order: "2" }}>
                             <Searchbar setResult={setResult} filter={filter} />
-                        </div>
-                        <div className="lg:row-span-3 col-span-2">
                             <DropdownFilters
                                 filter={filter}
                                 setFilter={setFilter}
                             />
                         </div>
-                        <div className="lg:row-span-3 col-span-2">
+                        <div className="flex" style={{ order: "1" }}>
                             <button
                                 id="add-product"
                                 aria-expanded="true"
