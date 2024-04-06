@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar/Navbar"
-import ContactsPage from "./components/ContactsPage/ContactsPage"
+import ContactsPage from "./components/contactsPage/ContactsPage"
 import UserProfile from "./components/UserProfile/UserProfile"
 
 function App() {
