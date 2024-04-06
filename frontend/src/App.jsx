@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Navbar from "../Navbar/Navbar"
-import ContactsPage from "../contactsPage/ContactsPage"
-import UserProfile from "../UserProfile/UserProfile"
-
+import Navbar from "./components/Navbar/Navbar"
+import ContactsPage from "./components/ContactsPage/ContactsPage"
+import UserProfile from "./components/UserProfile/UserProfile"
+import Login from "./components/login/login"
 function App() {
     return (
         <>
@@ -11,7 +11,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<ContactsPage />} />
                     <Route path="/profile" element={<UserProfile />} />
-                    {/* <Route path="/loginPage" element={<LoginPage />} /> */}
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </BrowserRouter>
         </>
