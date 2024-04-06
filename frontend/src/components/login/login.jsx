@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import "./login.css";
 import axios from "axios";
-import App from "../Home/App";
-import ReactDOM from "react-dom/client"
+import { Navigate } from "react-router-dom";
 
-
-
-const Login = (props) => {
+const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  
+  const [loggedIn, setLoggedIn] = useState(false); // Stato per gestire il login avvenuto
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Username:", username);
@@ -28,18 +26,10 @@ const Login = (props) => {
       let data = response.data;
       console.log(data);
 
-        
-      // Salva il token utente nel localStorage o in un cookie per l'autenticazione
-      // window.location.href = "../Home/App.jsx"
+      // Setta lo stato per indicare che il login è avvenuto con successo
+      setLoggedIn(true);
 
-      const root = ReactDOM.createRoot(document.getElementById("root"))
-      root.render(
-          <React.StrictMode>
-              <App />
-          </React.StrictMode>
-      )
- 
-      // Resetta lo stato degli input
+      // Resetta lo stato degli input e degli errori
       setUsername("");
       setPassword("");
       setError(null);
@@ -48,12 +38,15 @@ const Login = (props) => {
       setError("Credenziali non valide.");
     }
   };
-console.log(window.location.href);
+
+  // Se l'utente è loggato con successo, reindirizza alla homepage
+  if (loggedIn) {
+    return <Navigate to="./components/Home/App.jsx" replace />;
+  }
+
   return (
     <div className="login">
-      
       <img src="logo_techsolutions_light.svg" alt="" className="h-[150px] w-[500px]" />
-    
       <form onSubmit={handleSubmit}>
         <input
           type="text"
