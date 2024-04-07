@@ -43,7 +43,8 @@ const Form = () => {
   };
 
   return (
-    <div className="container">
+    <div className="wrapper">
+      <div className="container">
       <form id="form" className="form" onSubmit={handleSubmit}>
         <div className={`form-control ${errors.username && 'error'}`}>
           <label htmlFor="username">Username</label>
@@ -105,6 +106,9 @@ const Form = () => {
         <button type="submit">Save</button>
       </form>
     </div>
+
+    </div>
+    
   );
 };
 

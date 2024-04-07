@@ -38,18 +38,18 @@ export default function Dropdown() {
                     leaveTo="transform opacity-0 scale-95"
                 >
                     <Menu.Items
-                        className="absolute z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                        className="absolute z-10 w-44 bg-neutral rounded divide-y divide-vivid shadow dark:bg-neutral dark:divide-subdue"
                         style={{ left: "-150px" }}
                     >
-                        <div className="flex flex-col py-1 text-sm text-gray-700 dark:text-gray-200">
+                        <div className="flex flex-col py-1 text-sm text-vivid dark:text-neutral">
                             <Menu.Item>
                                 {({ active }) => (
                                     <button
                                         onClick={openModal}
                                         className={classNames(
                                             active
-                                                ? "bg-gray-600 text-white"
-                                                : "text-white",
+                                                ? "bg-subdue text-white"
+                                                : "text-vivid",
                                             "block px-4 py-2 text-sm "
                                         )}
                                     >
@@ -63,8 +63,8 @@ export default function Dropdown() {
                                     <button
                                         className={classNames(
                                             active
-                                                ? "bg-gray-600 text-white"
-                                                : "text-white",
+                                                ? "bg-subdue text-white"
+                                                : "text-vivid",
                                             "block px-4 py-2 text-sm"
                                         )}
                                     >
