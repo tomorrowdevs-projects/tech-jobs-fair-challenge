@@ -13,10 +13,10 @@ const ContactPage = () => {
     //INserire use Effect per mantenere la sessione utente attiva
 
     return (
-        <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+        <section className="bg-vivid dark:vivid p-3 sm:p-5">
             <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
                 <div
-                    className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden"
+                    className="bg-neutral dark:bg-vivid relative shadow-md sm:rounded-lg overflow-hidden"
                     style={{ minHeight: "650px" }}
                 >
                     <div className="container flex flex-wrap justify-between p-4">
@@ -33,7 +33,7 @@ const ContactPage = () => {
                                 aria-expanded="true"
                                 aria-haspopup="true"
                                 type="button"
-                                className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                                className="flex items-center justify-center text-neutral bg-subdue hover:vivid focus:ring-4 focus:ring-vivid font-medium rounded-lg text-sm px-4 py-2 dark:subdue dark:hover:vivid focus:outline-none dark:focus:ring-vivd"
                             >
                                 <svg
                                     className="h-3.5 w-3.5 mr-2"
@@ -56,8 +56,8 @@ const ContactPage = () => {
                         className="overflow-x-auto"
                         style={{ minHeight: "500px" }}
                     >
-                        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <table className="w-full text-sm text-left text-vivid dark:text-neutral">
+                            <thead className="text-xs text-vivid uppercase bg-neutral dark:bg-subdue dark:text-neutral">
                                 <tr>
                                     <th scope="col" className="px-4 py-3">
                                         First Name
@@ -95,13 +95,13 @@ const ContactPage = () => {
                         className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
                         aria-label="Table navigation"
                     >
-                        <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                        <span className="text-sm font-normal text-vivid dark:text-neutral">
                             Showing
-                            <span className="font-semibold text-gray-900 dark:text-white">
+                            <span className="font-semibold text-vivid dark:text-neutral">
                                 1-10
                             </span>
                             of
-                            <span className="font-semibold text-gray-900 dark:text-white">
+                            <span className="font-semibold text-vivid dark:text-neutral">
                                 1000
                             </span>
                         </span>
@@ -109,7 +109,7 @@ const ContactPage = () => {
                             <li>
                                 <a
                                     href="/"
-                                    className="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                    className="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-vivid bg-neutral rounded-l-lg border border-neutral hover:bg-gray-100 hover:text-subdue dark:bg-vivid dark:border-vivid dark:text-neutral dark:hover:bg-slate-800 dark:hover:text-neutral"
                                 >
                                     <span className="sr-only">Previous</span>
                                     <svg
@@ -130,7 +130,7 @@ const ContactPage = () => {
                             <li>
                                 <a
                                     href="/"
-                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-vivid bg-neutral border border-neutral hover:bg-gray-100 hover:text-subdue dark:bg-vivid dark:border-vivid dark:text-neutral dark:hover:bg-vivid dark:hover:text-white"
                                 >
                                     1
                                 </a>
@@ -138,7 +138,7 @@ const ContactPage = () => {
                             <li>
                                 <a
                                     href="/"
-                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-vivid bg-white border border-neutral hover:bg-gray-100 hover:text-vivid dark:bg-slate-800 dark:border-subdue dark:text-neutral dark:hover:bg-vivid dark:hover:text-neutral"
                                 >
                                     2
                                 </a>
@@ -147,7 +147,7 @@ const ContactPage = () => {
                                 <a
                                     href="/"
                                     aria-current="page"
-                                    className="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
+                                    className="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-vivid bg-white border border-gray-300 hover:bg-gray-100 hover:text-vivid dark:border-subdue dark:bg-slate-800 dark:text-white dark:hover:bg-vivid dark:hover:text-neutral"
                                 >
                                     3
                                 </a>
@@ -155,7 +155,7 @@ const ContactPage = () => {
                             <li>
                                 <a
                                     href="/"
-                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-viivid bg-white border border-gray-300 hover:bg-gray-100 hover:text-vivid dark:bg-slate-800 dark:border-subdue dark:text-white dark:hover:bg-vivid dark:hover:text-neutral"
                                 >
                                     ...
                                 </a>
@@ -163,7 +163,7 @@ const ContactPage = () => {
                             <li>
                                 <a
                                     href="/"
-                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-vivid bg-white border border-gray-300 hover:bg-gray-100 hover:text-vivid dark:bg-slate-800 dark:border-subdue dark:text-white dark:hover:bg-vivid dark:hover:text-neutral"
                                 >
                                     100
                                 </a>
@@ -171,7 +171,7 @@ const ContactPage = () => {
                             <li>
                                 <a
                                     href="/"
-                                    className="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                    className="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-vivid bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-vivid dark:bg-slate-800 dark:border-subdue dark:text-white dark:hover:bg-vivid dark:hover:text-neutral"
                                 >
                                     <span className="sr-only">Next</span>
                                     <svg
