@@ -2,6 +2,8 @@ import axios from "axios"
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./login.module.css"
+import BackgroundComponent from "./background"
+
 const Login = (props) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -42,38 +44,48 @@ const Login = (props) => {
     }
     console.log(window.location.href)
     return (
-        <div className={styles.login}>
-            <img
-                src="logo_techsolutions_light.svg"
-                alt=""
-                className="h-[150px] w-[500px]"
-            />
+        <div className={styles.bodyLogin}>
+            <div className={styles.login}>
+                <img
+                    src="logo_techsolutions_light.svg"
+                    alt=""
+                    className="h-[150px] w-[500px]"
+                />
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="username"
-                    placeholder="Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                {error && <div className="error">{error}</div>}
-                <button type="submit" className={styles.btn}>
-                    Login
-                </button>
-            </form>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        className={styles.input}
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        className={styles.input}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                    {error && <div className="error">{error}</div>}
+                    <button
+                        type="submit"
+                        className={[
+                            styles.btn,
+                            styles["btn-primary"],
+                            styles["btn-block"],
+                            styles["btn-large"],
+                        ].join(" ")}
+                    >
+                        Login
+                    </button>
+                </form>
+            </div>
         </div>
-        </div>
-        </>
     )
 }
 
