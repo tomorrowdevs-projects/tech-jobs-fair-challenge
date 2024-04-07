@@ -105,7 +105,7 @@ const ContactPage = ({query}) => {
                     style={{ minHeight: "650px" }}
                 >
                     <div className="container bg-neutral dark:bg-vivid flex flex-wrap justify-between p-4">
-                        <div className="flex flex-col sm:flex-row w-full sm:w-auto>
+                        <div className="flex flex-col sm:flex-row w-full sm:w-auto">
                         <Searchbar setResult={setResult} filter={filter} onSearch={handleSearch} />
                             <DropdownFilters
                                 filter={filter}
