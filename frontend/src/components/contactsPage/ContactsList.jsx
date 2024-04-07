@@ -46,7 +46,7 @@ const ContactList = (props) => {
             {contacts.map((contact, i) => (
                 <tr
                     key={`item-${i}`} // Key is correctly placed here
-                    className="border-b dark:border-gray-700"
+                    className="border-b border-subdue dark:border-subdue"
                 >
                     <th
                         scope="row"

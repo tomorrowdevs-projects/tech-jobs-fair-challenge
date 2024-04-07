@@ -16,11 +16,11 @@ export default function DropdownFilters(props) {
         <div className="relative inline-block text-left">
             <Listbox value={selected} onChange={setSelected}>
                 <div className="relative mt-1">
-                    <Listbox.Button className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+                    <Listbox.Button className="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-neutral focus:outline-none bg-subdue rounded-lg border border-vivid hover:bg-vivid hover:text-white focus:z-10 focus:ring-4 focus:ring-slate-800 dark:focus:ring-subdue dark:bg-subdue dark:text-neutral dark:border-subdue dark:hover:text-white">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             aria-hidden="true"
-                            className="h-4 w-4 mr-2 text-gray-400"
+                            className="h-4 w-4 mr-2 text-outline"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                         >
@@ -51,15 +51,15 @@ export default function DropdownFilters(props) {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+                        <Listbox.Options className="absolute mt-1 max-h-60 w-full z-index-1 overflow-auto rounded-md bg-subdue text-neutral py-1 text-base shadow-lg ring-1 ring-vivid/5 focus:outline-none sm:text-sm">
                             {filters.map((filter, filterIdx) => (
                                 <Listbox.Option
                                     key={filterIdx}
                                     className={({ active }) =>
                                         `relative cursor-default select-none py-2 pl-10 pr-4 ${
                                             active
-                                                ? "bg-amber-100 text-amber-900"
-                                                : "text-gray-900"
+                                                ? "bg-vivid text-neutral"
+                                                : "text-white"
                                         }`
                                     }
                                     value={filter}
@@ -77,7 +77,7 @@ export default function DropdownFilters(props) {
                                                 {filter.name}
                                             </span>
                                             {selected ? (
-                                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+                                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-neutral">
                                                     <CheckIcon
                                                         className="h-5 w-5"
                                                         aria-hidden="true"

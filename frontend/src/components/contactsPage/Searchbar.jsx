@@ -45,7 +45,7 @@ const Searchbar = (props) => {
                 <input
                     type="text"
                     id="simple-search"
-                    className="bg-neutral border border-subdue text-vivid text-sm rounded-lg focus:ring-subdue focus:border-vivid block w-full pl-10 p-2 dark:bg-vivid dark:border-subdue dark:placeholder-neutral dark:text-white dark:focus:ring-subdue dark:focus:border-subdue"
+                    className="bg-neutral border border-subdue text-vivid text-sm outline-none rounded-lg focus:ring-subdue focus:border-vivid block w-full pl-10 p-2 dark:bg-vivid dark:border-subdue dark:placeholder-neutral dark:text-white dark:focus:ring-subdue dark:focus:border-subdue"
                     placeholder="Search"
                     required=""
                     value={query}

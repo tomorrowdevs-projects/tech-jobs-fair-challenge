@@ -13,13 +13,13 @@ const ContactPage = () => {
     //INserire use Effect per mantenere la sessione utente attiva
 
     return (
-        <section className="bg-vivid dark:vivid p-3 sm:p-5">
+        <section className="bg-vivid dark:bg-vivid p-3 sm:p-5">
             <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
                 <div
                     className="bg-neutral dark:bg-vivid relative shadow-md sm:rounded-lg overflow-hidden"
                     style={{ minHeight: "650px" }}
                 >
-                    <div className="container flex flex-wrap justify-between p-4">
+                    <div className="container bg-neutral dark:bg-vivid flex flex-wrap justify-between p-4">
                         <div className="flex" style={{ order: "2" }}>
                             <Searchbar setResult={setResult} filter={filter} />
                             <DropdownFilters
@@ -33,7 +33,7 @@ const ContactPage = () => {
                                 aria-expanded="true"
                                 aria-haspopup="true"
                                 type="button"
-                                className="flex items-center justify-center text-neutral bg-subdue hover:vivid focus:ring-4 focus:ring-vivid font-medium rounded-lg text-sm px-4 py-2 dark:subdue dark:hover:vivid focus:outline-none dark:focus:ring-vivd"
+                                className="flex items-center justify-center text-neutral bg-subdue hover:vivid focus:ring-4 focus:ring-vivid font-medium rounded-lg text-sm px-4 py-2 dark:subdue dark:hover:vivid focus:outline-none dark:focus:ring-vivid"
                             >
                                 <svg
                                     className="h-3.5 w-3.5 mr-2"
@@ -57,7 +57,7 @@ const ContactPage = () => {
                         style={{ minHeight: "500px" }}
                     >
                         <table className="w-full text-sm text-left text-vivid dark:text-neutral">
-                            <thead className="text-xs text-vivid uppercase bg-neutral dark:bg-subdue dark:text-neutral">
+                            <thead className="text-xs text-neutral uppercase bg-subdue dark:bg-subdue dark:text-neutral">
                                 <tr>
                                     <th scope="col" className="px-4 py-3">
                                         First Name
@@ -155,7 +155,7 @@ const ContactPage = () => {
                             <li>
                                 <a
                                     href="/"
-                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-viivid bg-white border border-gray-300 hover:bg-gray-100 hover:text-vivid dark:bg-slate-800 dark:border-subdue dark:text-white dark:hover:bg-vivid dark:hover:text-neutral"
+                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-vivid bg-white border border-gray-300 hover:bg-gray-100 hover:text-vivid dark:bg-slate-800 dark:border-subdue dark:text-white dark:hover:bg-vivid dark:hover:text-neutral"
                                 >
                                     ...
                                 </a>
