@@ -1,8 +1,7 @@
 import axios from "axios"
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import "./login.css"
-
+import styles from "./login.module.css"
 const Login = (props) => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -43,11 +42,7 @@ const Login = (props) => {
     }
     console.log(window.location.href)
     return (
-        <>
-        <div className="..bodyLogin">
-            
-        
-        <div className="login">
+        <div className={styles.login}>
             <img
                 src="logo_techsolutions_light.svg"
                 alt=""
@@ -72,10 +67,7 @@ const Login = (props) => {
                     required
                 />
                 {error && <div className="error">{error}</div>}
-                <button
-                    type="submit"
-                    className="btn btn-primary btn-block btn-large"
-                >
+                <button type="submit" className={styles.btn}>
                     Login
                 </button>
             </form>

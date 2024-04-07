@@ -98,10 +98,10 @@ const ContactPage = ({query}) => {
         };
 
     return (
-        <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+        <section className="bg-vivid dark:vivid p-3 sm:p-5">
             <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
                 <div
-                    className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden"
+                    className="bg-neutral dark:bg-vivid relative shadow-md sm:rounded-lg overflow-hidden"
                     style={{ minHeight: "650px" }}
                 >
                     <div className="container flex flex-wrap justify-between p-4">
@@ -118,7 +118,7 @@ const ContactPage = ({query}) => {
                                 aria-expanded="true"
                                 aria-haspopup="true"
                                 type="button"
-                                className="flex items-center justify-center text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                                className="flex items-center justify-center text-neutral bg-subdue hover:vivid focus:ring-4 focus:ring-vivid font-medium rounded-lg text-sm px-4 py-2 dark:subdue dark:hover:vivid focus:outline-none dark:focus:ring-vivd"
                             >
                                 <svg
                                     className="h-3.5 w-3.5 mr-2"
@@ -141,8 +141,8 @@ const ContactPage = ({query}) => {
                         className="overflow-x-auto"
                         style={{ minHeight: "500px" }}
                     >
-                        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <table className="w-full text-sm text-left text-vivid dark:text-neutral">
+                            <thead className="text-xs text-vivid uppercase bg-neutral dark:bg-subdue dark:text-neutral">
                                 <tr>
                                     <th scope="col" className="px-4 py-3">
                                         First Name
@@ -182,7 +182,7 @@ const ContactPage = ({query}) => {
                         className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
                         aria-label="Table navigation"
                     >
-                        <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
+                        <span className="text-sm font-normal text-vivid dark:text-neutral">
                             Showing
 
                             <span className="font-semibold text-gray-900 dark:text-white">
