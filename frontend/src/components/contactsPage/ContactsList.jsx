@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react"
-import DropdownContact from "./../UI/DropdownContact"
+import DropdownContact from "../UI/DropdownContact"
 import { RotatingLines } from "react-loader-spinner"
 const ContactList = (props) => {
     const { contacts, setContacts } = props
