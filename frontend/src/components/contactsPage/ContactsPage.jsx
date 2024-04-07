@@ -13,21 +13,15 @@ const ContactPage = () => {
     //INserire use Effect per mantenere la sessione utente attiva
 
     return (
-        <section className="bg-vivid dark:bg-vivid p-3 sm:p-5">
+        <section className="bg-vivid dark:bg-vivid p-3 sm:p-5 min-h-screen">
             <div className="mx-auto max-w-screen-xl px-4 lg:px-12">
-                <div
-                    className="bg-neutral dark:bg-vivid relative shadow-md sm:rounded-lg overflow-hidden"
-                    style={{ minHeight: "650px" }}
-                >
+                <div className="bg-neutral dark:bg-vivid relative shadow-lg sm:rounded-lg overflow-hidden" style={{ minHeight: "650px" }}>
                     <div className="container bg-neutral dark:bg-vivid flex flex-wrap justify-between p-4">
-                        <div className="flex" style={{ order: "2" }}>
+                        <div className="flex flex-col sm:flex-row w-full sm:w-auto">
                             <Searchbar setResult={setResult} filter={filter} />
-                            <DropdownFilters
-                                filter={filter}
-                                setFilter={setFilter}
-                            />
+                            <DropdownFilters filter={filter} setFilter={setFilter}/>
                         </div>
-                        <div className="flex" style={{ order: "1" }}>
+                        <div className="flex justify-center sm:justify-end mt-4 sm:mt-0">
                             <button
                                 id="add-product"
                                 aria-expanded="true"

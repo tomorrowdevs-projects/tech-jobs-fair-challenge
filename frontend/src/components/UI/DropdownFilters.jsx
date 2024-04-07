@@ -51,7 +51,7 @@ export default function DropdownFilters(props) {
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Listbox.Options className="fixed mt-1 max-h-60 w-52 z-index-50 overflow-auto rounded-md bg-subdue text-neutral py-1 text-base shadow-lg ring-1 ring-vivid/5 focus:outline-none sm:text-sm">
+                        <Listbox.Options className="fixed mt-1 max-h-40 w-52 z-index-50 overflow-auto rounded-md bg-subdue text-neutral py-1 text-base shadow-lg ring-1 ring-vivid/5 focus:outline-none sm:text-sm">
                             {filters.map((filter, filterIdx) => (
                                 <Listbox.Option
                                     key={filterIdx}

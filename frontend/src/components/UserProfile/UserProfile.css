@@ -2,6 +2,7 @@
 .wrapper {
     background-color: #213159;
     max-height: 100vh;
+    min-height: 100vh;
   }
   
 
@@ -15,7 +16,7 @@
 .form {
     padding: 30px 40px;
     max-width: 400px;
-    margin: 0 auto;
+    margin: 1.5rem auto;
 }
 
 .form-control {
