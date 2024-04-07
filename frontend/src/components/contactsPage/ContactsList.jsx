@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useState } from "react"
-import DropdownContact from "./../UI/DropdownContact"
-import { RotatingLines } from "react-loader-spinner"
-const ContactList = (props) => {
-    const { contacts, setContacts } = props
-    const [loading, setLoading] = useState(true)
+import React, { useEffect, useState, useCallback } from "react";
+import DropdownContact from "./../UI/DropdownContact";
+import { RotatingLines } from "react-loader-spinner";
+
+const ContactList = ({ setContacts, currentPage }) => {
+    const [loading, setLoading] = useState(true);
+    const [contacts, setLocalContacts] = useState([]);
 
     const getContacts = useCallback(async () => {
         try {
@@ -17,27 +18,29 @@ const ContactList = (props) => {
                         "Content-Type": "application/json",
                     },
                     method: "POST",
-
-                    body: JSON.stringify({}),
+                    body: JSON.stringify({
+                        page: currentPage,
+                    }),
                 }
-            )
+            );
 
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`)
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
-            const data = await response.json()
-            setContacts(data.data)
+            const data = await response.json();
+            setLocalContacts(data.data);
         } catch (error) {
-            console.error("Error fetching data:", error)
+            console.error("Error fetching data:", error);
+            // Potresti mostrare un messaggio di errore all'utente qui
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
-    }, [setContacts])
+    }, [setLocalContacts, currentPage]);
 
     useEffect(() => {
-        getContacts()
-    }, [getContacts])
+        getContacts();
+    }, [getContacts]);
 
     return loading ? (
         <RotatingLines height="80" width="80" radius="9" color="blue" />
@@ -55,7 +58,6 @@ const ContactList = (props) => {
                         {contact.firstname}
                     </th>
                     <td className="px-4 py-3">{contact.lastname}</td>
-
                     <td className="px-4 py-3">{contact.phoneNumber}</td>
                     <td className="px-4 py-3">{contact.address}</td>
                     <td className="px-4 py-3">{contact.socialAccount}</td>
@@ -65,6 +67,7 @@ const ContactList = (props) => {
                 </tr>
             ))}
         </tbody>
-    )
-}
-export default ContactList
+    );
+};
+
+export default ContactList;

@@ -1,16 +1,101 @@
-import { useState } from "react"
-import DropdownFilters from "../UI/DropdownFilters"
-import ContactsList from "./ContactsList"
-import Searchbar from "./Searchbar"
+import React, { useState, useEffect } from "react";
+import DropdownFilters from "../UI/DropdownFilters";
+import ContactsList from "./ContactsList";
+import Searchbar from "./Searchbar";
 
-const ContactPage = () => {
+const ContactPage = ({query}) => {
     const [result, setResult] = useState()
-    const [contacts, setContacts] = useState([])
-    // const [filter, setFilter] = useState("")
+    const [contacts, setContacts] = useState([]);
+    const [filter, setFilter] = useState("");
+    const [currentPage, setCurrentPage] = useState(0);
+    const [pageIndex, setIndex] = useState(currentPage + 1)
+    const pageSize = 10; // Numero di contatti per pagina
+    const [totalContacts, setTotalContacts] = useState(0); // Numero totale di contatti
 
-    const [filter, setFilter] = useState("")
+    // Effetto per caricare i contatti quando la pagina cambia
+    useEffect(() => {
+        // Simulazione della richiesta API per ottenere i contatti
+        const fetchContacts = async () => {
+            let data = {}; // Definizione di data all'inizio della funzione
+            try {
+                const response = await fetch(
+                    `https://tjf-challenge.azurewebsites.net/web/people/list`,
+                    {
+                        headers: {
+                            Authorization:
+                                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5YmQzOGYxOC1lNjBjLTQ4NDItODFlMS0zMGZiZTY0NjA1YWYiLCJpYXQiOjE3MTIzOTAzMjQsImlkIjoiYTFjMTZmZjctZGY5YS00MWZiLWIyMjgtMjQwYTRjOTc0NjE2IiwiZnVsbG5hbWUiOiJBZG1pbiBUSkYtQ2hhbGxlbmdlIiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGUtaWQiOiIyMjJjZmY5ZC0xZjJkLTRmNWYtYmEyYi05YzUxOTgzYmQ0MGQiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE3MTIzOTAzMjQsImV4cCI6MTcxMjM5MTIyNCwiaXNzIjoiVG9tb3Jyb3dEZXZzIiwiYXVkIjoiVG9tb3Jyb3dEZXZzIn0.9Khnd5I6nb7zm3RLvf79rLb4ttj5UP53xjDKlLoSwH4",
+                            Accept: "application/json",
+                            "Content-Type": "application/json",
+                        },
+                        method: "POST",
+                        body: JSON.stringify({
+                            page: currentPage,
+                        })
+                    }
+                );
+        
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+        
+                data = await response.json(); // Assegnamento del valore a data
+                
+                setTotalContacts(data.recordsTotal);
+        
+                // Assicurati che totalContacts sia un numero positivo
+                const total = parseInt(data.recordsTotal);
+                setTotalContacts(total);
+                
+                const contatti = parseInt(data.data)
+                setContacts(contatti);
+                
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                console.error("Response data:", data);
+            }
+        }
+       
 
-    //INserire use Effect per mantenere la sessione utente attiva
+        fetchContacts();
+    }, [currentPage]);
+
+
+    // Funzione per gestire il cambio di pagina
+    const handlePageChange = (pageNumberIndex, pageNumber) => {
+        setCurrentPage(pageNumber)
+        setIndex(pageNumberIndex); // Imposta il numero di pagina corrente
+    }
+
+    
+
+
+
+    // Funzione per generare i pulsanti delle pagine
+    const generatePageButtons = () => {
+        const totalPages = Math.ceil(totalContacts / pageSize);
+        const pages = [];
+        for (let i = 1; i <= totalPages; i++) {
+            pages.push(
+                <li key={i}>
+                    <button
+                        className={`flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 focus:outline-none ${
+                          pageIndex === i
+                                ? "hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                : "hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                        }`}
+                        onClick={() => handlePageChange(i, i - 1)}
+                    >
+                        {i}
+                    </button>
+                </li>
+            );
+        }
+        return pages;
+    };
+    
+        const handleSearch = (value) => {
+            console.log("Searched for:", value);
+        };
 
     return (
         <section className="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
@@ -21,7 +106,7 @@ const ContactPage = () => {
                 >
                     <div className="container flex flex-wrap justify-between p-4">
                         <div className="flex" style={{ order: "2" }}>
-                            <Searchbar setResult={setResult} filter={filter} />
+                        <Searchbar setResult={setResult} filter={filter} onSearch={handleSearch} />
                             <DropdownFilters
                                 filter={filter}
                                 setFilter={setFilter}
@@ -87,6 +172,8 @@ const ContactPage = () => {
                             </thead>
                             <ContactsList
                                 contacts={contacts}
+                                currentPage={currentPage}
+                                pageSize={pageSize}
                                 setContacts={setContacts}
                             />
                         </table>
@@ -97,19 +184,31 @@ const ContactPage = () => {
                     >
                         <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
                             Showing
+
                             <span className="font-semibold text-gray-900 dark:text-white">
-                                1-10
+                                 {Math.min(
+                                    pageIndex * pageSize, totalContacts
+                                )}
                             </span>
+
                             of
+
                             <span className="font-semibold text-gray-900 dark:text-white">
-                                1000
+                                 {totalContacts} 
                             </span>
                         </span>
                         <ul className="inline-flex items-stretch -space-x-px">
                             <li>
-                                <a
-                                    href="/"
-                                    className="flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                <button
+                                    className={`flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 focus:outline-none ${
+                                        pageIndex === 1
+                                            ? "cursor-not-allowed"
+                                            : "hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                    }`}
+                                    onClick={() =>
+                                        handlePageChange(pageIndex - 1, currentPage - 1)
+                                    }
+                                    disabled={pageIndex === 1}
                                 >
                                     <span className="sr-only">Previous</span>
                                     <svg
@@ -125,53 +224,23 @@ const ContactPage = () => {
                                             clipRule="evenodd"
                                         />
                                     </svg>
-                                </a>
+                                </button>
                             </li>
+                            {generatePageButtons()}
                             <li>
-                                <a
-                                    href="/"
-                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                                >
-                                    1
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                                >
-                                    2
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    aria-current="page"
-                                    className="flex items-center justify-center text-sm z-10 py-2 px-3 leading-tight text-primary-600 bg-primary-50 border border-primary-300 hover:bg-primary-100 hover:text-primary-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"
-                                >
-                                    3
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                                >
-                                    ...
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    className="flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                                >
-                                    100
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/"
-                                    className="flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                <button
+                                    className={`flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 focus:outline-none ${
+                                        pageIndex === Math.ceil(totalContacts / pageSize) 
+                                            ? "cursor-not-allowed"
+                                            : "hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                    }`}
+                                    onClick={() =>
+                                        handlePageChange(pageIndex + 1 , currentPage + 1)
+                                    }
+                                    disabled={
+                                        pageIndex ===
+                                        Math.ceil(totalContacts / pageSize)
+                                    }
                                 >
                                     <span className="sr-only">Next</span>
                                     <svg
@@ -187,7 +256,7 @@ const ContactPage = () => {
                                             clipRule="evenodd"
                                         />
                                     </svg>
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </nav>
@@ -196,4 +265,5 @@ const ContactPage = () => {
         </section>
     )
 }
-export default ContactPage
+
+export default ContactPage;

@@ -43,6 +43,10 @@ const Login = (props) => {
     }
     console.log(window.location.href)
     return (
+        <>
+        <div className="..bodyLogin">
+            
+        
         <div className="login">
             <img
                 src="logo_techsolutions_light.svg"
@@ -76,6 +80,8 @@ const Login = (props) => {
                 </button>
             </form>
         </div>
+        </div>
+        </>
     )
 }
 
