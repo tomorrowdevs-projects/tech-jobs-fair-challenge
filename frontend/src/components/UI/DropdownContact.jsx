@@ -1,6 +1,7 @@
 import { Menu, Transition } from "@headlessui/react"
 import { Fragment, useState } from "react"
 import ContactModal from "./../ContactModal/ContactModal"
+import DeleteContact from "./../DeleteContact/DeleteContact"
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ")
 }
@@ -13,6 +14,7 @@ export default function Dropdown(props) {
         setModalToggle(true)
         setSelectedContactId(contactId)
     }
+    console.log(selectedContactId)
     return (
         <>
             <Menu as="div" className="relative inline-block text-left">
@@ -59,19 +61,14 @@ export default function Dropdown(props) {
                                     </button>
                                 )}
                             </Menu.Item>
-
                             <Menu.Item>
                                 {({ active }) => (
-                                    <button
-                                        className={classNames(
-                                            active
-                                                ? "bg-subdue text-white"
-                                                : "text-vivid",
-                                            "block px-4 py-2 text-sm"
-                                        )}
-                                    >
-                                        Delete
-                                    </button>
+                                    <DeleteContact
+                                        active={active}
+                                        activeClass="bg-subdue text-white"
+                                        noActiveClass="text-vivid"
+                                        customClass="block px-4 py-2 text-sm"
+                                    />
                                 )}
                             </Menu.Item>
                         </div>

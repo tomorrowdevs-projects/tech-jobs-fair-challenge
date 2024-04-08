@@ -139,7 +139,7 @@ const TableNavigation = (props) => {
                             pageIndex === Math.ceil(totalContacts / pageSize)
                                 ? "cursor-not-allowed"
                                 : "hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                        }`}
+                        } ${selected ? " bg-gray-100 text-gray-700 " : ""}`}
                         onClick={() =>
                             handlePageChange(pageIndex + 1, currentPage + 1)
                         }

@@ -2,7 +2,6 @@ import axios from "axios"
 import React, { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styles from "./login.module.css"
-import BackgroundComponent from "./background"
 
 const Login = (props) => {
     const [username, setUsername] = useState("")
@@ -19,10 +18,10 @@ const Login = (props) => {
         e.preventDefault()
         // console.log("Username:", username)
         // console.log("Password:", password)
-        const user = {
-            username: username,
-            password: password,
-        }
+        // const user = {
+        //     username: username,
+        //     password: password,
+        // }
         try {
             const response = await axios.post(
                 "https://tjf-challenge.azurewebsites.net/web/auth/login",

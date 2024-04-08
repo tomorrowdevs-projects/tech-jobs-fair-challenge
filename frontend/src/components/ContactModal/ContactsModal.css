@@ -8,6 +8,7 @@
 .card {
     min-width: 300px;
     max-width: 350px;
+    min-height: 60vh;
     margin: 60px auto;
     overflow-y: hidden;
     background-color: #e7e7e7;
