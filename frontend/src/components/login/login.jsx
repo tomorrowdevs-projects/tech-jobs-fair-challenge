@@ -10,10 +10,15 @@ const Login = (props) => {
     const [error, setError] = useState(null)
     const navigate = useNavigate()
 
+    //memorize the login credentials into the input fields
+    const admin = {
+        username: "admin",
+        password: "TJF-Challenge_04-2024",
+    }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log("Username:", username)
-        console.log("Password:", password)
+        // console.log("Username:", username)
+        // console.log("Password:", password)
         const user = {
             username: username,
             password: password,
@@ -21,7 +26,7 @@ const Login = (props) => {
         try {
             const response = await axios.post(
                 "https://tjf-challenge.azurewebsites.net/web/auth/login",
-                user
+                admin
             )
             if (!response) {
                 throw new Error(error)
@@ -58,7 +63,7 @@ const Login = (props) => {
                         name="username"
                         placeholder="Username"
                         className={styles.input}
-                        value={username}
+                        value={admin.username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
                     />
@@ -67,7 +72,7 @@ const Login = (props) => {
                         name="password"
                         placeholder="Password"
                         className={styles.input}
-                        value={password}
+                        value={admin.password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />

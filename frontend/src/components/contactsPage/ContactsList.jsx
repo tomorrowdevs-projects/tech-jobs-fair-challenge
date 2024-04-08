@@ -1,11 +1,11 @@
-import React, { useEffect, useState, useCallback } from "react";
-import DropdownContact from "./../UI/DropdownContact";
-import { RotatingLines } from "react-loader-spinner";
+import React, { useEffect, useState, useCallback } from "react"
+import DropdownContact from "./../UI/DropdownContact"
+import { RotatingLines } from "react-loader-spinner"
 
 const ContactList = ({ setContacts, currentPage }) => {
-    const [loading, setLoading] = useState(true);
-    const [contacts, setLocalContacts] = useState([]);
-
+    const [loading, setLoading] = useState(true)
+    const [contacts, setLocalContacts] = useState([])
+    console.log(contacts)
     const getContacts = useCallback(async () => {
         try {
             const response = await fetch(
@@ -22,25 +22,24 @@ const ContactList = ({ setContacts, currentPage }) => {
                         page: currentPage,
                     }),
                 }
-            );
+            )
 
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                throw new Error(`HTTP error! Status: ${response.status}`)
             }
 
-            const data = await response.json();
-            setLocalContacts(data.data);
+            const data = await response.json()
+            setLocalContacts(data.data)
         } catch (error) {
-            console.error("Error fetching data:", error);
-            // Potresti mostrare un messaggio di errore all'utente qui
+            console.error("Error fetching data:", error)
         } finally {
-            setLoading(false);
+            setLoading(false)
         }
-    }, [setLocalContacts, currentPage]);
+    }, [setLocalContacts, currentPage])
 
     useEffect(() => {
-        getContacts();
-    }, [getContacts]);
+        getContacts()
+    }, [getContacts])
 
     return loading ? (
         <RotatingLines height="80" width="80" radius="9" color="blue" />
@@ -62,12 +61,12 @@ const ContactList = ({ setContacts, currentPage }) => {
                     <td className="px-4 py-3">{contact.address}</td>
                     <td className="px-4 py-3">{contact.socialAccount}</td>
                     <td className="px-4 py-3 flex items-center justify-end">
-                        <DropdownContact />
+                        <DropdownContact contactId={contact.id} />
                     </td>
                 </tr>
             ))}
         </tbody>
-    );
-};
+    )
+}
 
-export default ContactList;
+export default ContactList

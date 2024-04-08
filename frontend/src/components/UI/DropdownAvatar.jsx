@@ -62,6 +62,9 @@ export default function Dropdown() {
                                             : "text-white",
                                         "block px-4 py-2 text-sm cursor-pointer"
                                     )}
+                                    onClick={() => {
+                                        navigate("/login")
+                                    }}
                                 >
                                     Logout
                                 </button>
