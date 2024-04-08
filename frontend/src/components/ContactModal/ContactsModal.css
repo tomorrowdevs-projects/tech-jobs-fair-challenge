@@ -211,6 +211,7 @@
     object-position: center;
     object-fit: cover;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .photo-input {
