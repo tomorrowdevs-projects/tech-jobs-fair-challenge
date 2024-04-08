@@ -1,9 +1,7 @@
-import React, { useEffect, useState, useCallback } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import DropdownContact from "./../UI/DropdownContact"
-import { RotatingLines } from "react-loader-spinner"
 
-const ContactList = ({ setContacts, currentPage }) => {
-    const [loading, setLoading] = useState(true)
+const ContactList = ({ setContacts, currentPage, setLoading }) => {
     const [contacts, setLocalContacts] = useState([])
     console.log(contacts.contactsList)
     const getContacts = useCallback(async () => {
@@ -35,15 +33,13 @@ const ContactList = ({ setContacts, currentPage }) => {
         } finally {
             setLoading(false)
         }
-    }, [setLocalContacts, currentPage])
+    }, [setLocalContacts, setLoading, currentPage])
 
     useEffect(() => {
         getContacts()
     }, [getContacts])
 
-    return loading ? (
-        <RotatingLines height="80" width="80" radius="9" color="blue" />
-    ) : (
+    return (
         <tbody>
             {contacts.map((contact, i) => (
                 <tr

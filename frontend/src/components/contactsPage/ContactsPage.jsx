@@ -4,6 +4,8 @@ import ContactsList from "./ContactsList"
 import Searchbar from "./Searchbar"
 import TableNavigation from "./TableNavigation"
 import ContactAddModal from "../ContactAddModal/ContactAddModal"
+import { DotLoader } from "react-spinners"
+import { useLoading } from "../../context/LoadingContext"
 
 const ContactPage = ({ query }) => {
     const [contacts, setContacts] = useState([])
@@ -11,8 +13,9 @@ const ContactPage = ({ query }) => {
     const [currentPage, setCurrentPage] = useState(0)
     const [pageIndex, setIndex] = useState(currentPage + 1)
     const [totalContacts, setTotalContacts] = useState(0) // Numero totale di contatti
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false)
     const pageSize = 10 // Numero di contatti per pagina
+    const { loading, setLoading } = useLoading()
 
     useEffect(() => {
         const ws = new WebSocket(
@@ -53,6 +56,13 @@ const ContactPage = ({ query }) => {
             ws.close()
         }
     }, [])
+    useEffect(() => {
+        // Simula il caricamento dei dati, Solo in produzione
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 5000)
+    }, [setLoading])
 
     return (
         <section className="bg-vivid dark:bg-vivid p-3 sm:p-5 min-h-screen">
@@ -103,45 +113,54 @@ const ContactPage = ({ query }) => {
                         className="overflow-x-auto"
                         style={{ minHeight: "500px" }}
                     >
-                        <table className="w-full text-sm text-left text-vivid dark:text-neutral">
-                            <thead className="text-xs text-neutral uppercase bg-subdue dark:bg-subdue dark:text-neutral">
-                                <tr>
-                                    <th scope="col" className="px-4 py-3">
-                                        First Name
-                                    </th>
-                                    <th scope="col" className="px-4 py-3">
-                                        Last Name
-                                    </th>
-                                    <th
-                                        scope="col "
-                                        className="hidden md:table-cell px-4 py-3"
-                                    >
-                                        Phone
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="hidden md:table-cell px-4 py-3"
-                                    >
-                                        Email
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="hidden lg:table-cell px-4 py-3"
-                                    >
-                                        Social Account
-                                    </th>
-                                    <th scope="col" className="px-4 py-3">
-                                        <span className="sr-only">Actions</span>
-                                    </th>
-                                </tr>
-                            </thead>
-                            <ContactsList
-                                contacts={contacts}
-                                currentPage={currentPage}
-                                pageSize={pageSize}
-                                setContacts={setContacts}
-                            />
-                        </table>
+                        {loading ? (
+                            <div className="flex items-center justify-center min-h-[500px]">
+                                <DotLoader color="#3d6098" />
+                            </div>
+                        ) : (
+                            <table className="w-full text-sm text-left text-vivid dark:text-neutral">
+                                <thead className="text-xs text-neutral uppercase bg-subdue dark:bg-subdue dark:text-neutral">
+                                    <tr>
+                                        <th scope="col" className="px-4 py-3">
+                                            First Name
+                                        </th>
+                                        <th scope="col" className="px-4 py-3">
+                                            Last Name
+                                        </th>
+                                        <th
+                                            scope="col "
+                                            className="hidden md:table-cell px-4 py-3"
+                                        >
+                                            Phone
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="hidden md:table-cell px-4 py-3"
+                                        >
+                                            Email
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            className="hidden lg:table-cell px-4 py-3"
+                                        >
+                                            Social Account
+                                        </th>
+                                        <th scope="col" className="px-4 py-3">
+                                            <span className="sr-only">
+                                                Actions
+                                            </span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <ContactsList
+                                    contacts={contacts}
+                                    currentPage={currentPage}
+                                    pageSize={pageSize}
+                                    setContacts={setContacts}
+                                    setLoading={setLoading}
+                                />
+                            </table>
+                        )}
                     </div>
                     <TableNavigation
                         totalContacts={totalContacts}
@@ -155,11 +174,11 @@ const ContactPage = ({ query }) => {
                 </div>
             </div>
             {isAddModalOpen && (
-        <ContactAddModal
-          modalToggle={isAddModalOpen}
-          setModalToggle={setIsAddModalOpen}
-        />
-      )}
+                <ContactAddModal
+                    modalToggle={isAddModalOpen}
+                    setModalToggle={setIsAddModalOpen}
+                />
+            )}
         </section>
     )
 }

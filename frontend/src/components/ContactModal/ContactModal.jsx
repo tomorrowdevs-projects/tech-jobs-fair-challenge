@@ -1,7 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react"
 import { Fragment, useCallback, useEffect, useState } from "react"
-import "./ContactsModal.css" // Import the CSS file containing styles
+import { DotLoader } from "react-spinners"
 import DeleteContact from "../DeleteContact/DeleteContact"
+import "./ContactsModal.css" // Import the CSS file containing styles
 
 const CardComponent = (props) => {
     const { modalToggle, setModalToggle, selectedContactId } = props
@@ -17,7 +18,14 @@ const CardComponent = (props) => {
     const [photoUrl, setPhotoUrl] = useState(
         "https://thispersondoesnotexist.com/"
     )
-
+    const [loading, setLoading] = useState(false)
+    useEffect(() => {
+        // Simula il caricamento dei dati, Solo in produzione
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 5000)
+    }, [setLoading])
     const EditCard = ({ onEdit, onCancel }) => {
         return (
             <div className="edit-card">
@@ -126,7 +134,9 @@ const CardComponent = (props) => {
             setContactDetails(data)
         } catch (error) {
             console.error("Error fetching data:", error)
-        } //aggiungere loading
+        } finally {
+            setLoading(false)
+        }
     }, [selectedContactId])
 
     useEffect(() => {
@@ -277,6 +287,10 @@ const CardComponent = (props) => {
                                             <button onClick={handleSave}>
                                                 Save
                                             </button>
+                                        </div>
+                                    ) : loading ? (
+                                        <div className="flex items-center justify-center min-h-[50vh]">
+                                            <DotLoader color="#3d6098" />
                                         </div>
                                     ) : (
                                         <>
