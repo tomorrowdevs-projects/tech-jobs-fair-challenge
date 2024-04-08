@@ -1,28 +1,16 @@
 import { useState } from "react"
-const Searchbar = (props) => {
-    const { setResult, filter } = props
-    const [query, setQuery] = useState("")
 
-    const handleSearch = async (e) => {
-        e.preventDefault()
-        try {
-            const response = await fetch(
-                `https://tjf-challenge.azurewebsites.net/web/people/list?firstname=${query}`
-            )
 
-            if (!response.ok) {
-                throw new Error(`Errore nella richiesta: ${response.status}`)
-            }
+const Searchbar = ({ onSearch }) => {
+    const [query, setQuery] = useState("");
 
-            const data = await response.json()
-
-            setResult(data)
-        } catch (errore) {
-            console.error("Errore durante la ricerca:", errore.message)
-        }
-    }
+    const handleSearch = (event) => {
+        const { value } = event.target;
+        setQuery(value);
+        onSearch(value); // Invia il testo di ricerca al genitore
+    };
     return (
-        <form className="flex items-center" onSubmit={handleSearch}>
+        <div className="flex items-center">
             <label htmlFor="simple-search" className="sr-only">
                 Search
             </label>
@@ -49,10 +37,10 @@ const Searchbar = (props) => {
                     placeholder="Search"
                     required=""
                     value={query}
-                    onChange={(e) => setQuery(e.target.value)}
+                    onChange={handleSearch}
                 />
             </div>
-        </form>
+        </div>
     )
 }
 export default Searchbar

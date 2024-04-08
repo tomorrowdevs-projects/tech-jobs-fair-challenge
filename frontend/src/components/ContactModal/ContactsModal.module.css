@@ -1,0 +1,169 @@
+/* //I make these on comment to avoid all body goes in the middle of the page */
+#card-modal {
+    background-color: #213159;
+    display: flex;
+    justify-content: center;
+    color: #3d6098;
+}
+
+.card {
+    max-width: 350px;
+    margin: 60px auto;
+    overflow-y: hidden;
+    background-color: #e7e7e7;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    transition: all 0.3s;
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.523);
+}
+
+.card_header {
+    position: relative;
+    display: flex;
+    height: 190px;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.card_avatar {
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    object-position: center;
+    object-fit: cover;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-64px);
+}
+
+.card_fullname {
+    position: absolute;
+    bottom: 16px;
+    font-size: 1.37rem;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    transform: translateY(-10px) translateX(-50%);
+    left: 50%;
+}
+.card_roletitle {
+    position: absolute;
+    bottom: 0;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    font-weight: 500;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-7px);
+}
+
+.card_social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 25px;
+}
+.card_social svg {
+    fill: #3d6098;
+    width: 16px;
+    transition: 0.3s;
+}
+.card_social a {
+    color: #8797a1;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    background-color: rgba(93, 133, 193, 0.05);
+    margin-right: 10px;
+}
+
+.card_social a:hover svg {
+    fill: #637faa;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.card_contacts {
+    padding: 25px 25px 30px 25px;
+}
+
+.card_contact {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    font-size: 0.87rem;
+    color: #3d6098;
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.2;
+    margin-top: 10px;
+}
+.card_contact svg {
+    flex-shrink: 0;
+    width: 30px;
+    min-height: 30px;
+    margin-right: 12px;
+    transition: 0.3s;
+    padding-right: 12px;
+    border-right: 1px solid #4b77bc;
+}
+
+.card_edit_button {
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.edit_button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    color: #3d6098;
+}
+
+.edit_card {
+    position: absolute;
+    font-family: "Jost", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin-top: 25px;
+    width: 80px;
+    background-color: #e7e7e7;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.13);
+    transition: all 0.2s ease-in-out;
+    border: none;
+    max-height: 150px;
+    z-index: 1000;
+}
+
+.edit_card button {
+    width: 100%;
+    padding: 6px 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    color: #3d6098;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
