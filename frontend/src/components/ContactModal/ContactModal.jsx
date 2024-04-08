@@ -2,10 +2,14 @@ import { Dialog, Transition } from "@headlessui/react"
 import { Fragment, useState } from "react"
 import "./ContactsModal.css" // Import the CSS file containing styles
 
-const EditCard = ({ onClose }) => {
+const EditCard = ({ onEdit, onCancel }) => {
     return (
         <div className="edit-card">
-            <button>Edit</button>
+            {onCancel ? (
+                <button onClick={onCancel}>Cancel</button>
+            ) : (
+                <button onClick={onEdit}>Edit</button>
+            )}
             <button>Delete</button>
         </div>
     )
@@ -14,15 +18,42 @@ const CardComponent = (props) => {
     const { modalToggle, setModalToggle } = props
     function closeModal() {
         setModalToggle(false)
+        setEditMode(false)
+        setShowEditCard(false)
     }
     const [showEditCard, setShowEditCard] = useState(false)
+    const [editMode, setEditMode] = useState(false)
+    const [name, setName] = useState("Andrea Rossi")
+    const [role, setRole] = useState("Manager")
+    const [address, setAddress] = useState("14 Via Maria Montessori, Milano")
+    const [phone, setPhone] = useState("+39 028 844 7363")
+    const [email, setEmail] = useState("andrearossi@techsolutions.com")
+    const [photoUrl, setPhotoUrl] = useState("https://thispersondoesnotexist.com/")
 
     const handleEditClick = () => {
         setShowEditCard(!showEditCard)
     }
 
-    const handleCloseEditCard = () => {
+    const handlePhotoChange = (e) => {
+        const file = e.target.files[0]
+        const reader = new FileReader()
+        reader.onloadend = () => {
+            setPhotoUrl(reader.result)
+        }
+        reader.readAsDataURL(file)
+    }
+
+    const handleEdit = () => {
+        setEditMode(true)
         setShowEditCard(false)
+    }
+
+    const handleCancel = () => {
+        setEditMode(false)
+    }
+
+    const handleSave = () => {
+        setEditMode(false)
     }
 
     return (
@@ -87,14 +118,66 @@ const CardComponent = (props) => {
                                                 </svg>
                                             </button>
 
-                                            {showEditCard && (
-                                            <EditCard
-                                                onClose={handleCloseEditCard}
-                                            />
-                                        )}
+                                            {showEditCard && <EditCard onEdit={handleEdit} 
+                                            onCancel={editMode ? handleCancel : null}
+                                            />}
                                         </div>
                                         
                                     </div>
+
+                                    {editMode ? (
+                                        <div className="card-edit-form">
+                                            <div className="photo-input">
+                                                <img
+                                                    className="card-edit-avatar"
+                                                    src={photoUrl}
+                                                    alt="avatar"
+                                                />
+                                                <label htmlFor="photo-upload">
+                                                    <span>Change Photo</span>
+                                                    <input
+                                                        id="photo-upload"
+                                                        type="file"
+                                                        accept="image/*"
+                                                        onChange={handlePhotoChange}
+                                                    />
+                                                </label>
+                                            </div>
+                                            <input
+                                                type="text"
+                                                placeholder="Name"
+                                                value={name}
+                                                onChange={(e) => setName(e.target.value)}
+                                            />
+                                            
+                                            <input
+                                                type="text"
+                                                placeholder="Role"
+                                                value={role}
+                                                onChange={(e) => setRole(e.target.value)}
+                                            />
+                                            <input
+                                                type="text"
+                                                placeholder="Address"
+                                                value={address}
+                                                onChange={(e) => setAddress(e.target.value)}
+                                            />
+                                            <input
+                                                type="text"
+                                                placeholder="Phone"
+                                                value={phone}
+                                                onChange={(e) => setPhone(e.target.value)}
+                                            />
+                                            <input
+                                                type="email"
+                                                placeholder="Email"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                            />
+                                            <button onClick={handleSave}>Save</button>
+                                        </div>
+                                    ) : (
+                                        <>
 
                                     <div className="card-header">
                                         <img
@@ -102,12 +185,8 @@ const CardComponent = (props) => {
                                             src="https://thispersondoesnotexist.com/"
                                             alt="avatar"
                                         />
-                                        <h1 className="card-fullname">
-                                            Andrea Rossi
-                                        </h1>
-                                        <h2 className="card-roletitle">
-                                            Manager
-                                        </h2>
+                                        <h1 className="card-fullname">{name}</h1>
+                                        <h2 className="card-roletitle">{role}</h2>
                                     </div>
                                     <div className="card-main">
                                         <div className="card-social">
@@ -170,7 +249,7 @@ const CardComponent = (props) => {
                                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
                                                 <circle cx="12" cy="10" r="3" />
                                             </svg>
-                                            14 Via Maria Montessori, Milano
+                                            {address}
                                         </div>
 
                                         <div className="card-contact">
@@ -185,7 +264,7 @@ const CardComponent = (props) => {
                                             >
                                                 <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
                                             </svg>
-                                            +39 028 844 7363
+                                            {phone}
                                         </div>
 
                                         <div className="card-contact">
@@ -201,9 +280,11 @@ const CardComponent = (props) => {
                                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                                                 <path d="M22 6l-10 7L2 6" />
                                             </svg>
-                                            andrearossi@techsolutions.com
+                                            {email}
                                         </div>
                                     </div>
+                                    </>
+                                )}
                                 </div>
                             </Transition.Child>
                         </div>
