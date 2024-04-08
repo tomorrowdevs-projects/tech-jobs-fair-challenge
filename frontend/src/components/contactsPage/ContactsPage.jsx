@@ -3,6 +3,7 @@ import DropdownFilters from "../UI/DropdownFilters"
 import ContactsList from "./ContactsList"
 import Searchbar from "./Searchbar"
 import TableNavigation from "./TableNavigation"
+import ContactAddModal from "../ContactAddModal/ContactAddModal"
 
 const ContactPage = ({ query }) => {
     const [contacts, setContacts] = useState([])
@@ -10,6 +11,7 @@ const ContactPage = ({ query }) => {
     const [currentPage, setCurrentPage] = useState(0)
     const [pageIndex, setIndex] = useState(currentPage + 1)
     const [totalContacts, setTotalContacts] = useState(0) // Numero totale di contatti
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const pageSize = 10 // Numero di contatti per pagina
 
     useEffect(() => {
@@ -77,6 +79,7 @@ const ContactPage = ({ query }) => {
                                 aria-expanded="true"
                                 aria-haspopup="true"
                                 type="button"
+                                onClick={() => setIsAddModalOpen(true)}
                                 className="flex items-center justify-center text-neutral bg-subdue hover:vivid focus:ring-4 focus:ring-vivid font-medium rounded-lg text-sm px-4 py-2 dark:subdue dark:hover:vivid focus:outline-none dark:focus:ring-vivid"
                             >
                                 <svg
@@ -148,6 +151,12 @@ const ContactPage = ({ query }) => {
                     />
                 </div>
             </div>
+            {isAddModalOpen && (
+        <ContactAddModal
+          modalToggle={isAddModalOpen}
+          setModalToggle={setIsAddModalOpen}
+        />
+      )}
         </section>
     )
 }
