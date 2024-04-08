@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500|Jost:400,500,600&display=swap");
+.wrapper {
+    background-color: #213159;
+    max-height: 100vh;
+    min-height: 100vh;
+  }
+  
+
+.container {
+    background-color: #213159;
+    overflow: hidden;
+    margin: 0 auto;
+    color: #e7e7e7;
+}
+
+.form {
+    padding: 30px 40px;
+    max-width: 400px;
+    margin: 1.5rem auto;
+}
+
+.form-control {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.form-control label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.form-control input {
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    display: block;
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    color: #213159;
+}
+
+.form-control input:focus {
+    outline: 0;
+    border-color: #3d6098;
+}
+
+.form-control.error input {
+    border-color: #f04b4c;
+}
+
+.form-control.error {
+    color: #f04b4c;
+    visibility: visible;
+}
+
+.form-control small {
+    color: #f04b4c;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    visibility: hidden;
+}
+
+.form-control.error small {
+    visibility: visible;
+}
+
+.form button {
+    background-color: #e7e7e7;
+    border: 2px solid #e7e7e7;
+    border-radius: 4px;
+    color: #213159;
+    display: block;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+    cursor: pointer;
+    text-transform: uppercase;
+}
