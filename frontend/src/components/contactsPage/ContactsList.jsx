@@ -5,7 +5,7 @@ import { RotatingLines } from "react-loader-spinner"
 const ContactList = ({ setContacts, currentPage }) => {
     const [loading, setLoading] = useState(true)
     const [contacts, setLocalContacts] = useState([])
-    console.log(contacts)
+    console.log(contacts.contactsList)
     const getContacts = useCallback(async () => {
         try {
             const response = await fetch(
@@ -56,10 +56,17 @@ const ContactList = ({ setContacts, currentPage }) => {
                     >
                         {contact.firstname}
                     </th>
+
                     <td className="px-4 py-3">{contact.lastname}</td>
-                    <td className="px-4 py-3">{contact.phoneNumber}</td>
-                    <td className="px-4 py-3">{contact.address}</td>
-                    <td className="px-4 py-3">{contact.socialAccount}</td>
+                    <td className="hidden md:table-cell px-4 py-3">
+                        {contact.phoneNumber}
+                    </td>
+                    <td className="hidden md:table-cell px-4 py-3">
+                        {contact.email}
+                    </td>
+                    <td className="hidden lg:table-cell px-4 py-3">
+                        {contact.socialAccount}
+                    </td>
                     <td className="px-4 py-3 flex items-center justify-end">
                         <DropdownContact contactId={contact.id} />
                     </td>

@@ -112,22 +112,25 @@ const ContactPage = ({ query }) => {
                                     <th scope="col" className="px-4 py-3">
                                         Last Name
                                     </th>
-                                    <th scope="col" className="px-4 py-3">
+                                    <th
+                                        scope="col "
+                                        className="hidden md:table-cell px-4 py-3"
+                                    >
                                         Phone
                                     </th>
-                                    <th scope="col" className="px-4 py-3">
-                                        Address
+                                    <th
+                                        scope="col"
+                                        className="hidden md:table-cell px-4 py-3"
+                                    >
+                                        Email
                                     </th>
                                     <th
-                                        scope="col hidden lg:flex"
-                                        className="px-4 py-3"
+                                        scope="col"
+                                        className="hidden lg:table-cell px-4 py-3"
                                     >
                                         Social Account
                                     </th>
-                                    <th
-                                        scope="col hidden lg:flex"
-                                        className="px-4 py-3"
-                                    >
+                                    <th scope="col" className="px-4 py-3">
                                         <span className="sr-only">Actions</span>
                                     </th>
                                 </tr>
