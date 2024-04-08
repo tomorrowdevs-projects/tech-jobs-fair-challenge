@@ -58,9 +58,15 @@ const ContactList = ({ setContacts, currentPage }) => {
                     </th>
 
                     <td className="px-4 py-3">{contact.lastname}</td>
-                    <td className="px-4 py-3">{contact.phoneNumber}</td>
-                    <td className="px-4 py-3">{contact.email}</td>
-                    <td className="px-4 py-3">{contact.socialAccount}</td>
+                    <td className="hidden md:table-cell px-4 py-3">
+                        {contact.phoneNumber}
+                    </td>
+                    <td className="hidden md:table-cell px-4 py-3">
+                        {contact.email}
+                    </td>
+                    <td className="hidden lg:table-cell px-4 py-3">
+                        {contact.socialAccount}
+                    </td>
                     <td className="px-4 py-3 flex items-center justify-end">
                         <DropdownContact contactId={contact.id} />
                     </td>
