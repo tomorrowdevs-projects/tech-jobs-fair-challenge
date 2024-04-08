@@ -1,4 +1,4 @@
-import ContactsPage from "../contactsPage/ContactsPage"
+import ContactsPage from "../ContactsPage/ContactsPage"
 import Navbar from "../Navbar/Navbar"
 
 const Dashboard = () => {
