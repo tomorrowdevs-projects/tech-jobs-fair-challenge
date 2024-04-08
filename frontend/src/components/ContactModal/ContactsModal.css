@@ -15,6 +15,7 @@
     border-radius: 10px;
     transition: all 0.3s;
     box-shadow: 0 0 0 8px rgba(61, 96, 152, 0.523);
+    padding-bottom: 1.5rem;
 }
 
 .card-header {
