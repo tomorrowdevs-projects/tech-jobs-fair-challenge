@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import DropdownFilters from "../UI/DropdownFilters"
 import ContactsList from "./ContactsList"
 import Searchbar from "./Searchbar"
@@ -13,9 +13,48 @@ const ContactPage = ({ query }) => {
     const [totalContacts, setTotalContacts] = useState(0) // Numero totale di contatti
     const pageSize = 10 // Numero di contatti per pagina
 
-    const handleSearch = (value) => {
-        console.log("Searched for:", value)
-    }
+    // const handleSearch = (value) => {
+    //     console.log("Searched for:", value)
+    // }
+
+    useEffect(() => {
+        const ws = new WebSocket(
+            "wss://tjf-challenge.azurewebsites.net/web/ws/send"
+        )
+
+        ws.onopen = () => {
+            console.log("WebSocket connected!")
+            // Qui puoi inviare un messaggio al server se necessario
+            ws.send(
+                JSON.stringify({
+                    message: "string",
+                    personId: "string",
+                })
+            )
+        }
+
+        ws.onmessage = (event) => {
+            // Gestire i messaggi ricevuti dal server
+            const message = JSON.parse(event.data)
+            console.log("Message from server ", message)
+            if (message.type === "update") {
+                // Aggiorna i tuoi contatti qui
+                setContacts(message.payload)
+            }
+        }
+
+        ws.onerror = (error) => {
+            console.error("WebSocket error:", error)
+        }
+
+        ws.onclose = () => {
+            console.log("WebSocket disconnected")
+        }
+
+        return () => {
+            ws.close()
+        }
+    }, [])
 
     return (
         <section className="bg-vivid dark:bg-vivid p-3 sm:p-5 min-h-screen">
@@ -29,7 +68,9 @@ const ContactPage = ({ query }) => {
                             <Searchbar
                                 setResult={setResult}
                                 filter={filter}
-                                onSearch={handleSearch}
+                                // onSearch={handleSearch}
+                                setTotalContacts={setTotalContacts}
+                                setContacts={setContacts}
                             />
                             <DropdownFilters
                                 filter={filter}
