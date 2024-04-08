@@ -5,11 +5,13 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(" ")
 }
 
-export default function Dropdown() {
+export default function Dropdown(props) {
+    const { contactId } = props
     let [modalToggle, setModalToggle] = useState(false)
-
-    function openModal() {
+    const [selectedContactId, setSelectedContactId] = useState()
+    function handleOnclick() {
         setModalToggle(true)
+        setSelectedContactId(contactId)
     }
     return (
         <>
@@ -45,7 +47,7 @@ export default function Dropdown() {
                             <Menu.Item>
                                 {({ active }) => (
                                     <button
-                                        onClick={openModal}
+                                        onClick={handleOnclick}
                                         className={classNames(
                                             active
                                                 ? "bg-subdue text-white"
@@ -78,6 +80,7 @@ export default function Dropdown() {
                 <ContactModal
                     modalToggle={modalToggle}
                     setModalToggle={setModalToggle}
+                    selectedContactId={selectedContactId}
                 />
             </Menu>
         </>

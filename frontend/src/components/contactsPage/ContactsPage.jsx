@@ -5,7 +5,6 @@ import Searchbar from "./Searchbar"
 import TableNavigation from "./TableNavigation"
 
 const ContactPage = ({ query }) => {
-    const [result, setResult] = useState()
     const [contacts, setContacts] = useState([])
     const [filter, setFilter] = useState("")
     const [currentPage, setCurrentPage] = useState(0)
@@ -13,13 +12,10 @@ const ContactPage = ({ query }) => {
     const [totalContacts, setTotalContacts] = useState(0) // Numero totale di contatti
     const pageSize = 10 // Numero di contatti per pagina
 
-    // const handleSearch = (value) => {
-    //     console.log("Searched for:", value)
-    // }
-
     useEffect(() => {
         const ws = new WebSocket(
-            "wss://tjf-challenge.azurewebsites.net/web/ws/send"
+            // "wss://tjf-challenge.azurewebsites.net/web/ws/send"
+            "ws://tjf-challenge.azurewebsites.net:1402"
         )
 
         ws.onopen = () => {
@@ -66,9 +62,7 @@ const ContactPage = ({ query }) => {
                     <div className="container bg-neutral dark:bg-vivid flex flex-wrap justify-between p-4">
                         <div className="flex flex-col sm:flex-row w-full sm:w-auto">
                             <Searchbar
-                                setResult={setResult}
                                 filter={filter}
-                                // onSearch={handleSearch}
                                 setTotalContacts={setTotalContacts}
                                 setContacts={setContacts}
                             />
