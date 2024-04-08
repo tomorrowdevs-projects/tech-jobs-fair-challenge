@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const TableNavigation = (props) => {
     const {
@@ -11,6 +11,8 @@ const TableNavigation = (props) => {
         setIndex,
     } = props
     const pageSize = 10 // Numero di contatti per pagina
+
+    const [selected, setSelected] = useState(false)
 
     // Effetto per caricare i contatti quando la pagina cambia
     useEffect(() => {
@@ -61,6 +63,7 @@ const TableNavigation = (props) => {
     const handlePageChange = (pageNumberIndex, pageNumber) => {
         setCurrentPage(pageNumber)
         setIndex(pageNumberIndex) // Imposta il numero di pagina corrente
+        setSelected(true) // Imposta il bottone come cliccato
     }
 
     // Funzione per generare i pulsanti delle pagine
@@ -107,7 +110,7 @@ const TableNavigation = (props) => {
                             pageIndex === 1
                                 ? "cursor-not-allowed"
                                 : "hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                        }`}
+                        } `}
                         onClick={() =>
                             handlePageChange(pageIndex - 1, currentPage - 1)
                         }
