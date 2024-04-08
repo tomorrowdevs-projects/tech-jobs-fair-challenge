@@ -6,7 +6,9 @@
 }
 
 .card {
+    min-width: 300px;
     max-width: 350px;
+    min-height: 60vh;
     margin: 60px auto;
     overflow-y: hidden;
     background-color: #e7e7e7;
@@ -203,7 +205,7 @@
     background-color: #213159;
 }
 
-.card-edit-avatar{
+.card-edit-avatar {
     width: 100px;
     height: 100px;
     border-radius: 50%;
