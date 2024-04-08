@@ -73,16 +73,17 @@ const TableNavigation = (props) => {
         for (let i = 1; i <= totalPages; i++) {
             pages.push(
                 <li key={i}>
-                    <button
-                        className={`flex items-center justify-center text-sm py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 focus:outline-none ${
-                            pageIndex === i
-                                ? "hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                                : "hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                        }`}
-                        onClick={() => handlePageChange(i, i - 1)}
+                    <button 
+                    className={`flex items-center justify-center text-sm py-2 px-3 leading-tight text-subdue dark:bg-vivid border border-subdue dark:focus:bg-vivid dark:focus:text-white focus:outline-none ${
+                        pageIndex === i
+                        ? "bg-neutral hover:bg-neutral hover:text-vivid dark:bg-subdue dark:border-subdue dark:text-white"
+                        : "bg-dark hover:bg-neutral hover:text-vivid dark:bg-slate-800 dark:border-subdue dark:text-neutral dark:hover:bg-vivid dark:focus:bg-vivid dark:hover:text-white"
+                    }`}
+                    onClick={() => handlePageChange(i, i - 1)}
                     >
                         {i}
                     </button>
+
                 </li>
             )
         }
@@ -106,10 +107,10 @@ const TableNavigation = (props) => {
             <ul className="inline-flex items-stretch -space-x-px">
                 <li>
                     <button
-                        className={`flex items-center justify-center h-full py-1.5 px-3 ml-0 text-gray-500 bg-white rounded-l-lg border border-gray-300 focus:outline-none ${
+                        className={`flex items-center justify-center h-full py-1.5 px-3 ml-0 text-subdue bg-dark border-subdue rounded-l-lg border dark:bg-vivid dark:border-subdue dark:text-neutral border-gray-300 focus:outline-none ${
                             pageIndex === 1
                                 ? "cursor-not-allowed"
-                                : "hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                : "bg-dark text-subdue hover:bg-neutral hover:text-subdue dark:bg-slate-800 dark:border-subdue dark:text-neutral dark:hover:bg-subdue dark:focus:bg-vivid dark:hover:text-white"
                         } `}
                         onClick={() =>
                             handlePageChange(pageIndex - 1, currentPage - 1)
@@ -135,11 +136,11 @@ const TableNavigation = (props) => {
                 {generatePageButtons()}
                 <li>
                     <button
-                        className={`flex items-center justify-center h-full py-1.5 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 focus:outline-none ${
+                        className={`flex items-center justify-center h-full py-1.5 px-3 leading-tight text-subdue bg-dark border-subdue rounded-r-lg dark:focus:bg-vivid border border-gray-300 focus:outline-none ${
                             pageIndex === Math.ceil(totalContacts / pageSize)
                                 ? "cursor-not-allowed"
-                                : "hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-                        } ${selected ? " bg-gray-100 text-gray-700 " : ""}`}
+                                : "bg-dark hover:bg-neutral hover:text-subdue dark:bg-slate-800 dark:border-subdue dark:text-neutral dark:hover:bg-vivid dark:focus:bg-vivid dark:hover:text-white"
+                        } ${selected ? " bg-dark text-subdue dark:bg-slate-800 dark:border-subdue dark:text-neutral dark:hover:bg-vivid dark:focus:bg-vivid dark:hover:text-white" : ""}`}
                         onClick={() =>
                             handlePageChange(pageIndex + 1, currentPage + 1)
                         }

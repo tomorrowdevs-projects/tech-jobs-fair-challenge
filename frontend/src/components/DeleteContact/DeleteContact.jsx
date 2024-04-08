@@ -48,7 +48,7 @@ const DeleteContact = (props) => {
             onClick={handleConfirm}
             className={`${
                 active ? activeClass : noActiveClass
-            }  ${customClass}`}
+            } hover:bg-subdue hover:text-neutral  ${customClass}`}
         >
             Delete
         </button>

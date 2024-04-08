@@ -7,6 +7,7 @@ module.exports = {
                 subdue: "#3d6098",
                 accent: "#f04ba4",
                 neutral: "#e7e7e7",
+                dark: "#dbd9d9",
             },
         },
     },
