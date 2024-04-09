@@ -1,3 +1,4 @@
+import { PageProvider } from "../../context/PageContext"
 import ContactsPage from "../ContactsPage/ContactsPage"
 import Navbar from "../Navbar/Navbar"
 
@@ -5,7 +6,9 @@ const Dashboard = () => {
     return (
         <>
             <Navbar />
-            <ContactsPage />
+            <PageProvider>
+                <ContactsPage />
+            </PageProvider>
         </>
     )
 }

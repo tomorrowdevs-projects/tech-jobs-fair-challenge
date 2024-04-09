@@ -1,9 +1,12 @@
 import { useState } from "react"
+import useContacts from "../../hooks/fetchData"
+import { usePage } from "../../context/PageContext"
 
-const Searchbar = (props) => {
+const Searchbar = () => {
     const [query, setQuery] = useState("")
-    const { setTotalContacts, setContacts } = props
+    const { currentPage } = usePage()
 
+    const { setLocalContacts } = useContacts(currentPage)
     const handleSearch = async (e) => {
         e.preventDefault()
         console.log("domanda:", query)
@@ -29,7 +32,7 @@ const Searchbar = (props) => {
             }
 
             const data = await response.json()
-            setContacts(data.data)
+            setLocalContacts(data.data)
         } catch (error) {
             console.error("Error fetching data:", error)
         }

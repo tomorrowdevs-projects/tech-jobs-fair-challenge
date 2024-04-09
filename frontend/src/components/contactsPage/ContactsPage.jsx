@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react"
+import { DotLoader } from "react-spinners"
+import { usePage } from "../../context/PageContext"
+import useContacts from "../../hooks/fetchData"
+import ContactAddModal from "../ContactAddModal/ContactAddModal"
 import DropdownFilters from "../UI/DropdownFilters"
 import ContactsList from "./ContactsList"
 import Searchbar from "./Searchbar"
 import TableNavigation from "./TableNavigation"
-import ContactAddModal from "../ContactAddModal/ContactAddModal"
-import { DotLoader } from "react-spinners"
-import { useLoading } from "../../context/LoadingContext"
 
-const ContactPage = ({ query }) => {
-    const [contacts, setContacts] = useState([])
+const ContactPage = () => {
     const [filter, setFilter] = useState("")
-    const [currentPage, setCurrentPage] = useState(0)
-    const [pageIndex, setIndex] = useState(currentPage + 1)
-    const [totalContacts, setTotalContacts] = useState(0) // Numero totale di contatti
     const [isAddModalOpen, setIsAddModalOpen] = useState(false)
-    const pageSize = 10 // Numero di contatti per pagina
-    const { loading, setLoading } = useLoading()
+    const { currentPage } = usePage()
 
+    const { setLocalContacts, setLoading, loading } = useContacts(currentPage)
+    //WebSocket coinnection
     useEffect(() => {
         const ws = new WebSocket(
             // "wss://tjf-challenge.azurewebsites.net/web/ws/send"
@@ -40,7 +38,7 @@ const ContactPage = ({ query }) => {
             console.log("Message from server ", message)
             if (message.type === "update") {
                 // Aggiorna i tuoi contatti qui
-                setContacts(message.payload)
+                setLocalContacts(message.payload)
             }
         }
 
@@ -55,13 +53,13 @@ const ContactPage = ({ query }) => {
         return () => {
             ws.close()
         }
-    }, [])
+    }, [setLocalContacts])
+    //Useeffect to simulate loading fetching data
     useEffect(() => {
-        // Simula il caricamento dei dati, Solo in produzione
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
-        }, 5000)
+        }, 3000)
     }, [setLoading])
 
     return (
@@ -73,11 +71,7 @@ const ContactPage = ({ query }) => {
                 >
                     <div className="container bg-neutral dark:bg-vivid flex flex-wrap justify-between p-4">
                         <div className="flex flex-col sm:flex-row w-full sm:w-auto">
-                            <Searchbar
-                                filter={filter}
-                                setTotalContacts={setTotalContacts}
-                                setContacts={setContacts}
-                            />
+                            <Searchbar filter={filter} />
                             <DropdownFilters
                                 filter={filter}
                                 setFilter={setFilter}
@@ -152,25 +146,11 @@ const ContactPage = ({ query }) => {
                                         </th>
                                     </tr>
                                 </thead>
-                                <ContactsList
-                                    contacts={contacts}
-                                    currentPage={currentPage}
-                                    pageSize={pageSize}
-                                    setContacts={setContacts}
-                                    setLoading={setLoading}
-                                />
+                                <ContactsList />
                             </table>
                         )}
                     </div>
-                    <TableNavigation
-                        totalContacts={totalContacts}
-                        setTotalContacts={setTotalContacts}
-                        pageIndex={pageIndex}
-                        setIndex={setIndex}
-                        setCurrentPage={setCurrentPage}
-                        currentPage={currentPage}
-                        setContacts={setContacts}
-                    />
+                    <TableNavigation />
                 </div>
             </div>
             {isAddModalOpen && (

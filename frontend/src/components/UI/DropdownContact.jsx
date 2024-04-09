@@ -19,7 +19,12 @@ export default function Dropdown(props) {
         <>
             <Menu as="div" className="relative inline-block text-left">
                 <div>
-                    <Menu.Button className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100">
+                    <Menu.Button
+                        className="inline-flex items-center p-0.5 text-sm font-medium text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100"
+                        onClick={() => {
+                            setSelectedContactId(contactId)
+                        }}
+                    >
                         <svg
                             className="w-5 h-5"
                             aria-hidden="true"
@@ -68,6 +73,7 @@ export default function Dropdown(props) {
                                         activeClass="bg-subdue text-white"
                                         noActiveClass="text-vivid"
                                         customClass="block px-4 py-2 text-sm"
+                                        selectedContactId={selectedContactId}
                                     />
                                 )}
                             </Menu.Item>

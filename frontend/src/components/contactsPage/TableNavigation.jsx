@@ -1,63 +1,19 @@
 import { useEffect, useState } from "react"
+import { usePage } from "../../context/PageContext"
+import useContacts from "../../hooks/fetchData"
 
-const TableNavigation = (props) => {
-    const {
-        totalContacts,
-        setTotalContacts,
-        pageIndex,
-        currentPage,
-        setCurrentPage,
-        setContacts,
-        setIndex,
-    } = props
+const TableNavigation = () => {
+    const { currentPage, setCurrentPage, pageIndex, setIndex } = usePage()
+
     const pageSize = 10 // Numero di contatti per pagina
 
     const [selected, setSelected] = useState(false)
 
-    // Effetto per caricare i contatti quando la pagina cambia
+    const { totContacts, fetchContacts } = useContacts(currentPage)
+
     useEffect(() => {
-        // Simulazione della richiesta API per ottenere i contatti
-        const fetchContacts = async () => {
-            let data = {} // Definizione di data all'inizio della funzione
-            try {
-                const response = await fetch(
-                    `https://tjf-challenge.azurewebsites.net/web/people/list`,
-                    {
-                        headers: {
-                            Authorization:
-                                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI5YmQzOGYxOC1lNjBjLTQ4NDItODFlMS0zMGZiZTY0NjA1YWYiLCJpYXQiOjE3MTIzOTAzMjQsImlkIjoiYTFjMTZmZjctZGY5YS00MWZiLWIyMjgtMjQwYTRjOTc0NjE2IiwiZnVsbG5hbWUiOiJBZG1pbiBUSkYtQ2hhbGxlbmdlIiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGUtaWQiOiIyMjJjZmY5ZC0xZjJkLTRmNWYtYmEyYi05YzUxOTgzYmQ0MGQiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE3MTIzOTAzMjQsImV4cCI6MTcxMjM5MTIyNCwiaXNzIjoiVG9tb3Jyb3dEZXZzIiwiYXVkIjoiVG9tb3Jyb3dEZXZzIn0.9Khnd5I6nb7zm3RLvf79rLb4ttj5UP53xjDKlLoSwH4",
-                            Accept: "application/json",
-                            "Content-Type": "application/json",
-                        },
-                        method: "POST",
-                        body: JSON.stringify({
-                            page: currentPage,
-                        }),
-                    }
-                )
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`)
-                }
-
-                data = await response.json() // Assegnamento del valore a data
-
-                setTotalContacts(data.recordsTotal)
-
-                // Assicurati che totalContacts sia un numero positivo
-                const total = parseInt(data.recordsTotal)
-                setTotalContacts(total)
-
-                const contatti = parseInt(data.data)
-                setContacts(contatti)
-            } catch (error) {
-                console.error("Error fetching data:", error)
-                console.error("Response data:", data)
-            }
-        }
-
         fetchContacts()
-    }, [currentPage, setContacts, setTotalContacts])
+    }, [fetchContacts])
 
     // Funzione per gestire il cambio di pagina
     const handlePageChange = (pageNumberIndex, pageNumber) => {
@@ -68,22 +24,21 @@ const TableNavigation = (props) => {
 
     // Funzione per generare i pulsanti delle pagine
     const generatePageButtons = () => {
-        const totalPages = Math.ceil(totalContacts / pageSize)
+        const totalPages = Math.ceil(totContacts / pageSize)
         const pages = []
         for (let i = 1; i <= totalPages; i++) {
             pages.push(
                 <li key={i}>
-                    <button 
-                    className={`flex items-center justify-center text-sm py-2 px-3 leading-tight text-subdue dark:bg-vivid border border-subdue dark:focus:bg-vivid dark:focus:text-white focus:outline-none ${
-                        pageIndex === i
-                        ? "bg-neutral hover:bg-neutral hover:text-vivid dark:bg-subdue dark:border-subdue dark:text-white"
-                        : "bg-dark hover:bg-neutral hover:text-vivid dark:bg-slate-800 dark:border-subdue dark:text-neutral dark:hover:bg-vivid dark:focus:bg-vivid dark:hover:text-white"
-                    }`}
-                    onClick={() => handlePageChange(i, i - 1)}
+                    <button
+                        className={`flex items-center justify-center text-sm py-2 px-3 leading-tight text-subdue dark:bg-vivid border border-subdue dark:focus:bg-vivid dark:focus:text-white focus:outline-none ${
+                            pageIndex === i
+                                ? "bg-neutral hover:bg-neutral hover:text-vivid dark:bg-subdue dark:border-subdue dark:text-white"
+                                : "bg-dark hover:bg-neutral hover:text-vivid dark:bg-slate-800 dark:border-subdue dark:text-neutral dark:hover:bg-vivid dark:focus:bg-vivid dark:hover:text-white"
+                        }`}
+                        onClick={() => handlePageChange(i, i - 1)}
                     >
                         {i}
                     </button>
-
                 </li>
             )
         }
@@ -97,17 +52,17 @@ const TableNavigation = (props) => {
             <span className="text-sm font-normal text-vivid dark:text-neutral m-2">
                 Showing
                 <span className="font-semibold text-gray-900 dark:text-white m-2">
-                    {Math.min(pageIndex * pageSize, totalContacts)}
+                    {Math.min(pageIndex * pageSize, totContacts)}
                 </span>
                 of
                 <span className="font-semibold text-gray-900 dark:text-white m-2">
-                    {totalContacts}
+                    {totContacts}
                 </span>
             </span>
             <ul className="inline-flex items-stretch -space-x-px">
                 <li>
                     <button
-                        className={`flex items-center justify-center h-full py-1.5 px-3 ml-0 text-subdue bg-dark border-subdue rounded-l-lg border dark:bg-vivid dark:border-subdue dark:text-neutral border-gray-300 focus:outline-none ${
+                        className={`flex items-center justify-center h-full py-1.5 px-3 ml-0 text-subdue bg-dark border-subdue rounded-l-lg border dark:bg-vivid dark:border-subdue dark:text-neutral hover:border-gray-300 focus:outline-none ${
                             pageIndex === 1
                                 ? "cursor-not-allowed"
                                 : "bg-dark text-subdue hover:bg-neutral hover:text-subdue dark:bg-slate-800 dark:border-subdue dark:text-neutral dark:hover:bg-subdue dark:focus:bg-vivid dark:hover:text-white"
@@ -136,16 +91,20 @@ const TableNavigation = (props) => {
                 {generatePageButtons()}
                 <li>
                     <button
-                        className={`flex items-center justify-center h-full py-1.5 px-3 leading-tight text-subdue bg-dark border-subdue rounded-r-lg dark:focus:bg-vivid border border-gray-300 focus:outline-none ${
-                            pageIndex === Math.ceil(totalContacts / pageSize)
+                        className={`flex items-center justify-center h-full py-1.5 px-3 leading-tight text-subdue bg-dark border-subdue rounded-r-lg dark:focus:bg-vivid border hover:border-gray-300 focus:outline-none ${
+                            pageIndex === Math.ceil(totContacts / pageSize)
                                 ? "cursor-not-allowed"
                                 : "bg-dark hover:bg-neutral hover:text-subdue dark:bg-slate-800 dark:border-subdue dark:text-neutral dark:hover:bg-vivid dark:focus:bg-vivid dark:hover:text-white"
-                        } ${selected ? " bg-dark text-subdue dark:bg-slate-800 dark:border-subdue dark:text-neutral dark:hover:bg-vivid dark:focus:bg-vivid dark:hover:text-white" : ""}`}
+                        } ${
+                            selected
+                                ? " bg-dark text-subdue dark:bg-slate-800 dark:border-subdue dark:text-neutral dark:hover:bg-vivid dark:focus:bg-vivid dark:hover:text-white"
+                                : ""
+                        }`}
                         onClick={() =>
                             handlePageChange(pageIndex + 1, currentPage + 1)
                         }
                         disabled={
-                            pageIndex === Math.ceil(totalContacts / pageSize)
+                            pageIndex === Math.ceil(totContacts / pageSize)
                         }
                     >
                         <span className="sr-only">Next</span>
