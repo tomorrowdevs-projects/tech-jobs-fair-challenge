@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500|Jost:400,500,600&display=swap");
+
+.wrapper {
+  background-color: #213159;
+  max-height: 100vh;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: #213159;
+  overflow: hidden;
+  margin: 0 auto;
+  color: #e7e7e7;
+}
+
+.form {
+  padding: 20px 40px;
+  max-width: 400px;
+  margin: 1.5rem auto;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.form-control input {
+  border: 2px solid #e7e7e7;
+  border-radius: 4px;
+  display: block;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 10px;
+  width: 100%;
+  color: #213159;
+}
+
+.form-control input:focus {
+  outline: 0;
+  border-color: #3d6098;
+}
+
+.form-control span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.4rem;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.form button {
+  background-color: #3d6098;
+  border: 2px solid #3d6098;
+  border-radius: 4px;
+  color: #e7e7e7;
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.2rem;
+  padding: 12px;
+  margin-top: 10px;
+  width: 100%;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.form button:hover {
+  background-color: #2c4870;
+  border-color: #2c4870;
+}
