@@ -5,7 +5,8 @@ module.exports = {
             colors: {
                 vivid: "#213159",
                 subdue: "#3d6098",
-                accent: "#f04ba4",
+                accent: "#d63e69",
+                accentDark: "#b53559",
                 neutral: "#e7e7e7",
                 dark: "#dbd9d9",
             },
